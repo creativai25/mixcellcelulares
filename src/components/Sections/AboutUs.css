@@ -1,0 +1,139 @@
+.about-section {
+  padding: 100px 24px;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.about-content {
+  flex: 1;
+}
+
+.section-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(0, 68, 255, 0.1);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-full);
+  color: var(--brand-cyan);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+.about-description {
+  color: var(--text-muted);
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-description strong {
+  color: var(--text-main);
+}
+
+.about-highlights {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-card);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+}
+
+.highlight-icon {
+  font-size: 24px;
+}
+
+.highlight-item span {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.about-image-wrapper {
+  flex: 1;
+  position: relative;
+  height: 500px;
+}
+
+.about-image-decoration {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  bottom: 20px;
+  left: 20px;
+  border: 2px dashed var(--border-active);
+  border-radius: var(--radius-lg);
+  z-index: 1;
+}
+
+.about-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(10,17,34,0.9), rgba(0,68,255,0.1));
+}
+
+.video-container {
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.about-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 968px) {
+  .about-container {
+    flex-direction: column;
+  }
+  
+  .about-image-wrapper {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 32px;
+  }
+  
+  .about-highlights {
+    flex-direction: column;
+  }
+}
