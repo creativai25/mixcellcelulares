@@ -1,0 +1,104 @@
+.oslist { display: flex; flex-direction: column; gap: 16px; }
+
+.oslist-toolbar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.oslist-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  flex: 1;
+  min-width: 200px;
+  color: #888;
+}
+.oslist-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  width: 100%;
+}
+.oslist-filter {
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: #ccc;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+}
+.oslist-filter option { background: #1a1a1a; }
+
+.oslist-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid #2a2a2a; }
+.oslist-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.oslist-table thead tr { background: #151515; }
+.oslist-table th {
+  padding: 12px 14px;
+  text-align: left;
+  color: #666;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.oslist-table td {
+  padding: 12px 14px;
+  border-top: 1px solid #1e1e1e;
+  color: #ccc;
+  vertical-align: middle;
+}
+.oslist-table tbody tr:hover { background: #111; }
+
+.os-num   { font-weight: 700; color: #fff; white-space: nowrap; }
+.os-date  { color: #777; white-space: nowrap; font-size: 0.82rem; }
+.os-cliente-nome { color: #e0e0e0; font-weight: 500; }
+.os-cliente-tel  { color: #666; font-size: 0.78rem; margin-top: 2px; }
+.os-defeito { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #aaa; }
+.os-valor { font-weight: 600; color: #4ade80; white-space: nowrap; }
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cor);
+  background: color-mix(in srgb, var(--cor) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cor) 40%, transparent);
+  white-space: nowrap;
+}
+
+.os-btns { display: flex; gap: 6px; }
+.os-btns button {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #2a2a2a;
+  background: #111;
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.15s;
+}
+.os-btns button:hover { background: #1e1e1e; color: #fff; border-color: #444; }
+.os-btns .btn-del:hover { background: #2a1515; color: #e74c3c; border-color: #e74c3c; }
+
+.oslist-empty { text-align: center; padding: 48px; color: #555; }
+.oslist-count { font-size: 0.78rem; color: #555; text-align: right; }
+
+.print-only  { display: none; }
+.screen-only { display: flex; flex-direction: column; gap: 16px; }
+@media print {
+  .screen-only { display: none !important; }
+  .print-only  { display: block !important; }
+}
