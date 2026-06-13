@@ -1,0 +1,114 @@
+.scroll-row-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.scroll-row-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0 4px;
+}
+
+.scroll-row-header__title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--mc-white);
+}
+
+.scroll-row-header__subtitle {
+  font-size: 14px;
+  color: var(--mc-muted);
+  margin-top: 4px;
+}
+
+.scroll-row-header__nav {
+  display: flex;
+  gap: 8px;
+}
+
+.scroll-row-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--mc-bg-card);
+  border: 1px solid var(--mc-border);
+  color: var(--mc-white);
+  transition: all 0.2s ease;
+}
+
+.scroll-row-btn:hover:not(.scroll-row-btn--disabled) {
+  background: var(--mc-navy);
+  border-color: var(--mc-navy);
+  color: var(--mc-white);
+  transform: scale(1.05);
+}
+
+.scroll-row-btn--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.scroll-row-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-row {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 4px;
+}
+
+.scroll-row::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.scroll-row__track {
+  display: flex;
+  gap: var(--card-gap);
+  width: max-content;
+  padding: 8px 4px;
+}
+
+.scroll-row__item {
+  scroll-snap-align: start;
+}
+
+/* Fade Masks */
+.scroll-row-mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-row-mask--left {
+  left: 0;
+  background: linear-gradient(to right, var(--mc-white), transparent);
+}
+
+.scroll-row-mask--right {
+  right: 0;
+  background: linear-gradient(to left, var(--mc-white), transparent);
+}
+
+@media (max-width: 768px) {
+  .scroll-row-header__title {
+    font-size: 20px;
+  }
+  
+  .scroll-row-mask {
+    width: 24px;
+  }
+}

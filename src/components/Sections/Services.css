@@ -1,6 +1,6 @@
 .services-section {
   padding: 100px 24px;
-  background: var(--bg-secondary);
+  background: transparent;
 }
 
 .services-container {
@@ -16,11 +16,36 @@
   align-items: center;
 }
 
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(31, 162, 255, 0.08);
+  border: 1px solid rgba(31, 162, 255, 0.28);
+  color: var(--mc-sky);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 16px;
+  box-shadow: 0 0 18px rgba(31, 162, 255, 0.15);
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--mc-white);
+  letter-spacing: -0.02em;
+}
+
 .section-subtitle {
-  color: var(--text-muted);
+  color: var(--mc-muted);
   font-size: 16px;
   max-width: 600px;
   line-height: 1.6;
+  margin-top: 10px;
 }
 
 .services-grid-main {
@@ -29,50 +54,57 @@
   gap: 24px;
 }
 
+/* glass card */
 .service-card-main {
   padding: 32px;
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: var(--transition);
   position: relative;
   overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)), var(--mc-bg-card);
+  border: 1px solid var(--mc-border);
+  border-radius: var(--radius-card);
+  backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .service-card-main:hover {
   transform: translateY(-8px);
-  border-color: var(--border-active);
-  box-shadow: var(--shadow-glow);
+  border-color: rgba(31, 162, 255, 0.55);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .service-icon-main {
   width: 72px;
   height: 72px;
   border-radius: 16px;
-  background: rgba(0, 68, 255, 0.1);
-  color: var(--brand-cyan);
+  background: rgba(31, 162, 255, 0.12);
+  border: 1px solid var(--mc-border);
+  color: var(--mc-sky);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
-  transition: var(--transition);
+  transition: all 0.25s ease;
 }
 
 .service-card-main:hover .service-icon-main {
-  background: var(--brand-blue);
-  color: white;
-  transform: scale(1.1);
+  background: var(--mc-sky);
+  color: #04121F;
+  transform: scale(1.08);
+  box-shadow: var(--glow-neon);
 }
 
 .service-title-main {
   font-size: 22px;
   font-weight: 700;
+  color: var(--mc-white);
   margin-bottom: 12px;
-  font-family: var(--font-heading);
 }
 
 .service-desc-main {
-  color: var(--text-muted);
+  color: var(--mc-muted);
   font-size: 15px;
   line-height: 1.6;
   flex-grow: 1;
@@ -84,25 +116,27 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 20px;
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--mc-border);
 }
 
 .service-price {
   font-size: 14px;
-  font-weight: 600;
-  color: var(--brand-cyan);
-  background: rgba(0, 212, 255, 0.1);
+  font-weight: 700;
+  color: var(--mc-sky);
+  background: rgba(31, 162, 255, 0.12);
+  border: 1px solid var(--mc-border);
   padding: 6px 12px;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
+  text-shadow: 0 0 12px rgba(31, 162, 255, 0.45);
 }
 
 .btn-service {
-  color: var(--text-main);
-  font-weight: 600;
+  color: var(--mc-white);
+  font-weight: 700;
   font-size: 15px;
-  transition: var(--transition);
+  transition: color 0.25s ease;
 }
 
 .btn-service:hover {
-  color: var(--brand-blue);
+  color: var(--mc-sky);
 }

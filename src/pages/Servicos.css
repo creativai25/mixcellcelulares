@@ -1,0 +1,118 @@
+.servicos-page {
+  padding-bottom: 80px;
+}
+
+.servicos-intro {
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.servicos-intro h1 {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--mc-white);
+  margin-top: 12px;
+}
+
+.servicos-intro__lead {
+  font-size: 16px;
+  color: var(--mc-muted);
+  max-width: 700px;
+  margin: 12px auto 0;
+  line-height: 1.6;
+}
+
+/* Steps section */
+.servicos-steps {
+  padding: var(--section-py) 0;
+  border-top: 1px solid var(--mc-border);
+}
+
+.servicos-steps__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.step-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  background: var(--mc-bg-card);
+  border: 1px solid var(--mc-border);
+  transition: transform 0.25s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+}
+
+.step-card__icon {
+  margin-bottom: 16px;
+  background: var(--mc-white);
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--mc-border);
+  box-shadow: var(--shadow-card);
+}
+
+.step-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--mc-white);
+  margin-bottom: 8px;
+}
+
+.step-card__desc {
+  font-size: 13.5px;
+  color: var(--mc-muted);
+  line-height: 1.5;
+}
+
+/* CTA */
+.servicos-cta {
+  margin-top: 40px;
+}
+
+.servicos-cta__inner {
+  background: var(--mc-navy);
+  color: var(--mc-white);
+  padding: 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.servicos-cta__inner h2 {
+  color: var(--mc-white);
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.servicos-cta__inner p {
+  color: #94a3b8;
+  font-size: 15px;
+  max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  .servicos-intro h1 {
+    font-size: 28px;
+  }
+  
+  .servicos-cta__inner {
+    padding: 32px 20px;
+  }
+  
+  .servicos-cta__inner h2 {
+    font-size: 22px;
+  }
+}
