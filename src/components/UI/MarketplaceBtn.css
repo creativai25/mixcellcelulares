@@ -1,0 +1,151 @@
+.mkt-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01)), var(--mc-bg-card);
+  border: 1px solid var(--mc-border);
+  border-radius: var(--radius-card);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.mkt-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--mc-sky);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.mkt-btn__store-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mkt-btn__badge {
+  align-self: flex-start;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 6px;
+}
+
+.mkt-btn__meta {
+  font-size: 13px;
+  color: var(--mc-muted);
+}
+
+.mkt-btn__price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.mkt-btn__tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+
+.mkt-btn__tag--best {
+  background: rgba(43, 166, 255, 0.14);
+  color: var(--mc-sky);
+  border: 1px solid rgba(43, 166, 255, 0.4);
+  text-shadow: 0 0 10px rgba(43, 166, 255, 0.5);
+}
+
+.mkt-btn__tag--warning {
+  background: rgba(255, 77, 77, 0.1);
+  color: #FF4D4D;
+  border: 1px solid rgba(255, 77, 77, 0.2);
+}
+
+.mkt-btn__value {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--mc-white);
+}
+
+.mkt-btn__action-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mc-sky);
+  transition: transform 0.2s ease;
+}
+
+.mkt-btn:hover .mkt-btn__action-label {
+  transform: translateX(4px);
+  color: var(--store-color);
+}
+
+/* Compact version (for grid cards) */
+.mkt-btn--compact {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--mc-bg-card);
+  gap: 8px;
+}
+
+.mkt-btn--compact .mkt-btn__name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--mc-muted);
+}
+
+.mkt-btn--compact .mkt-btn__price {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--mc-white);
+}
+
+.mkt-btn--compact:hover {
+  background: var(--mc-bg-soft);
+  border-color: var(--mc-sky);
+}
+
+.mkt-btn--compact:hover .mkt-btn__name {
+  color: var(--mc-sky);
+}
+
+/* Highlight Best Price store */
+.mkt-btn--best {
+  border-left: 4px solid var(--mc-sky);
+  box-shadow: inset 0 0 24px rgba(43, 166, 255, 0.08), 0 0 0 1px rgba(43, 166, 255, 0.25);
+  animation: best-glow 2.6s ease-in-out infinite;
+}
+
+@keyframes best-glow {
+  0%, 100% { box-shadow: inset 0 0 24px rgba(43,166,255,0.06), 0 0 0 1px rgba(43,166,255,0.2); }
+  50%      { box-shadow: inset 0 0 28px rgba(43,166,255,0.14), 0 0 18px rgba(43,166,255,0.3), 0 0 0 1px rgba(43,166,255,0.45); }
+}
+
+/* Warn international store */
+.mkt-btn--alert {
+  border-left: 4px solid #FF4D4D;
+}
+
+@media (max-width: 500px) {
+  .mkt-btn {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .mkt-btn__price-section {
+    width: 100%;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed var(--mc-border);
+    padding-top: 10px;
+  }
+}

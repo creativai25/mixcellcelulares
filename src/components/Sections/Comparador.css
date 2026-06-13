@@ -1,0 +1,72 @@
+.comparador {
+  width: 100%;
+  background: var(--mc-bg-card);
+  border: 1px solid var(--mc-border);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  margin-top: 40px;
+}
+
+.comparador__header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--mc-border);
+  padding-bottom: 16px;
+}
+
+.comparador__title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--mc-white);
+}
+
+.comparador__subtitle {
+  font-size: 14px;
+  color: var(--mc-muted);
+  margin-top: 4px;
+}
+
+.comparador__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comparador__empty {
+  font-size: 14px;
+  color: var(--mc-muted);
+  line-height: 1.6;
+}
+
+.comparador__footer {
+  margin-top: 24px;
+  border-top: 1px solid var(--mc-border);
+  padding-top: 20px;
+}
+
+.comparador__disclaimer {
+  display: flex;
+  gap: 12px;
+  background: var(--mc-bg-soft);
+  border: 1px solid rgba(10, 36, 99, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 13px;
+  color: #B9C9DC;
+  line-height: 1.5;
+}
+
+.comparador__disclaimer-icon {
+  flex-shrink: 0;
+  color: var(--mc-sky);
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .comparador {
+    padding: 20px;
+  }
+  
+  .comparador__title {
+    font-size: 18px;
+  }
+}
