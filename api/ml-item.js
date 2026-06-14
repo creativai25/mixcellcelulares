@@ -98,6 +98,38 @@ export default async function handler(req, res) {
       return;
     }
 
+    // Sonda: /api/ml-item?probe=MLBxxxx — testa vários endpoints e mostra
+    // qual o ML libera (status + chaves do retorno), pra achar o caminho certo.
+    if (req.query.probe) {
+      const pid = String(req.query.probe);
+      const token = await getToken();
+      const endpoints = [
+        `https://api.mercadolibre.com/items/${pid}`,
+        `https://api.mercadolibre.com/products/${pid}`,
+        `https://api.mercadolibre.com/products/${pid}/items`,
+      ];
+      const out = [];
+      for (const u of endpoints) {
+        try {
+          const r = await fetch(u, { headers: { Authorization: `Bearer ${token}`, accept: 'application/json' } });
+          let b = null;
+          try { b = await r.json(); } catch {}
+          out.push({
+            url: u.replace(`/${pid}`, '/{id}'),
+            status: r.status,
+            keys: b && typeof b === 'object' && !Array.isArray(b) ? Object.keys(b).slice(0, 10) : Array.isArray(b) ? `array[${b.length}]` : null,
+            msg: b && b.message ? b.message : null,
+            price: b && (b.price ?? (b.buy_box_winner && b.buy_box_winner.price)) || null,
+            pics: b && Array.isArray(b.pictures) ? b.pictures.length : null,
+          });
+        } catch (e) {
+          out.push({ url: u, err: String(e.message || e) });
+        }
+      }
+      res.status(200).json(out);
+      return;
+    }
+
     const { id, ids } = req.query;
     const list = (ids ? String(ids).split(',') : id ? [String(id)] : [])
       .map((s) => s.trim())
