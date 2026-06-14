@@ -79,6 +79,23 @@ async function fetchItem(id, token) {
 
 export default async function handler(req, res) {
   try {
+    // Diagnóstico seguro: /api/ml-item?debug=1 — mostra se as chaves estão
+    // presentes e o tamanho delas, SEM expor o segredo.
+    if (req.query.debug) {
+      const cid = process.env.ML_CLIENT_ID || '';
+      const sec = process.env.ML_CLIENT_SECRET || '';
+      res.status(200).json({
+        client_id_value: cid, // App ID não é segredo
+        client_id_len: cid.length,
+        client_id_tem_espaco: cid !== cid.trim(),
+        client_secret_presente: !!sec,
+        client_secret_len: sec.length,
+        client_secret_tem_espaco: sec !== sec.trim(),
+        client_secret_preview: sec ? `${sec.slice(0, 3)}…${sec.slice(-2)}` : null,
+      });
+      return;
+    }
+
     const { id, ids } = req.query;
     const list = (ids ? String(ids).split(',') : id ? [String(id)] : [])
       .map((s) => s.trim())
