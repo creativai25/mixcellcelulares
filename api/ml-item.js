@@ -57,7 +57,9 @@ async function fetchItem(id, token) {
     headers: { Authorization: `Bearer ${token}`, accept: 'application/json' },
   });
   if (!res.ok) {
-    return { id, error: true, status: res.status };
+    let body = null;
+    try { body = await res.json(); } catch { try { body = await res.text(); } catch {} }
+    return { id, error: true, status: res.status, ml: body };
   }
   const it = await res.json();
   const data = {
