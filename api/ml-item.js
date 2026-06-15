@@ -130,6 +130,25 @@ export default async function handler(req, res) {
       return;
     }
 
+    // Extrai a foto oficial (og:image) de um anúncio do ML, rodando no IP da
+    // Vercel (que não está bloqueado). Uso: /api/ml-item?og=<url do anúncio>
+    if (req.query.og) {
+      const target = String(req.query.og);
+      if (!/^https:\/\/(www\.mercadolivre\.com\.br|meli\.la)\//.test(target)) {
+        res.status(400).json({ error: 'URL não permitida (só Mercado Livre).' });
+        return;
+      }
+      const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+      const r = await fetch(target, { headers: { 'User-Agent': UA, accept: 'text/html' }, redirect: 'follow' });
+      const html = await r.text();
+      const og = (html.match(/og:image"\s+content="([^"]+)"/i) || [])[1] || null;
+      const title = (html.match(/og:title"\s+content="([^"]+)"/i) || [])[1] || null;
+      // pega também algumas imagens 2X da galeria (D_Q_NP_2X) como bônus
+      const gallery = [...new Set((html.match(/https:\/\/http2\.mlstatic\.com\/D_Q_NP_2X_[A-Za-z0-9_-]+\.(?:webp|jpg)/g) || []))].slice(0, 8);
+      res.status(200).json({ og, title, gallery });
+      return;
+    }
+
     const { id, ids } = req.query;
     const list = (ids ? String(ids).split(',') : id ? [String(id)] : [])
       .map((s) => s.trim())
