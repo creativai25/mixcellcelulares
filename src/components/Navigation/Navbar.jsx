@@ -4,8 +4,9 @@ import './Navbar.css';
 
 const navLinks = [
   { label: 'Celulares', href: '/loja/celulares' },
-  { label: 'Acessórios', href: '/loja/capas' },
-  { label: 'Smart Home', href: '/loja/alexas' },
+  { label: 'Guia de Linhas', href: '/linhas' },
+  { label: '60+', href: '/loja/60-mais' },
+  { label: 'Películas', href: '/loja/peliculas' },
   { label: 'Serviços', href: '/servicos' },
   { label: 'Sobre', href: '/sobre' },
 ];

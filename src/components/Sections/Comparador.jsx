@@ -33,7 +33,7 @@ export default function Comparador({ marketplaces }) {
       <div className="comparador__header">
         <h3 className="comparador__title">Comparador de Preços</h3>
         <p className="comparador__subtitle">
-          Buscamos as melhores ofertas nas principais lojas do mercado brasileiro em tempo real
+          Preços de referência. O valor e o frete atualizados você confere na loja ao clicar.
         </p>
       </div>
 

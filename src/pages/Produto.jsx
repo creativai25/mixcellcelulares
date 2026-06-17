@@ -114,10 +114,10 @@ export default function Produto() {
               <h1 className="produto-page__title">{product.name}</h1>
               
               <div className="produto-page__price-block">
-                <span className="produto-page__price-label">Melhor Preço</span>
+                <span className="produto-page__price-label">A partir de</span>
                 <div className="produto-page__price-row">
                   <span className="produto-page__price-val">{formattedMinPrice}</span>
-                  <span className="produto-page__price-note">no comparador</span>
+                  <span className="produto-page__price-note">preço de referência · confira o valor atual no Mercado Livre</span>
                 </div>
               </div>
             </div>

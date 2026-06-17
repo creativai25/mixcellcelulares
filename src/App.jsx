@@ -12,6 +12,7 @@ import Admin from './pages/Admin';
 
 // Lazy imports para performance
 const Loja      = React.lazy(() => import('./pages/Loja'));
+const Linhas    = React.lazy(() => import('./pages/Linhas'));
 const Categoria = React.lazy(() => import('./pages/Categoria'));
 const Produto   = React.lazy(() => import('./pages/Produto'));
 const Servicos  = React.lazy(() => import('./pages/Servicos'));
@@ -43,6 +44,7 @@ function App() {
                 <Routes>
                   <Route path="/"                                element={<Home />} />
                   <Route path="/loja"                            element={<Loja />} />
+                  <Route path="/linhas"                          element={<Linhas />} />
                   <Route path="/loja/:categoria"                 element={<Categoria />} />
                   <Route path="/produto/:slug"                   element={<Produto />} />
                   <Route path="/servicos"                        element={<Servicos />} />
