@@ -1,15 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { categories } from '../../data/categories';
 import './Footer.css';
-
-const categories = [
-  { label: 'Celulares', slug: 'celulares' },
-  { label: 'Celulares para Idosos', slug: '60-mais' },
-  { label: 'Películas', slug: 'peliculas' },
-  { label: 'Cabos', slug: 'cabos' },
-  { label: 'Suportes Veiculares', slug: 'suportes' },
-  { label: 'Acessórios em Geral', slug: 'acessorios' },
-];
 
 const services = [
   { label: 'Conserto de iPhone', slug: 'servicos/conserto-iphone-canoas' },
