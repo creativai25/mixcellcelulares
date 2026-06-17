@@ -50,16 +50,16 @@ export default function Home() {
             <div className="hero-content animate-fade-up">
               <span className="hero-badge">
                 <BadgeCheck size={14} className="text-sky" />
-                <span>Indicação técnica de quem conserta no dia a dia</span>
+                <span>Tudo num lugar só · você economiza tempo</span>
               </span>
-              
+
               <h1 className="hero-title">
-                Quem conserta sabe <span className="text-gradient">o que quebra.</span><br />
-                Quem usa sabe <span className="text-gradient">o que dura.</span>
+                Pare de procurar em vários sites.<br />
+                <span className="text-gradient">A gente já achou o melhor pra você.</span>
               </h1>
-              
+
               <p className="hero-subtitle">
-                Compare preços de celulares, tablets e acessórios nos 5 maiores marketplaces do país. Acesse apenas produtos avaliados de verdade por quem entende de eletrônicos há 11 anos.
+                Reunimos os celulares e acessórios que valem a pena num lugar só — selecionados e indicados por quem conserta há 11 anos. Você economiza tempo, evita cilada e compra com confiança, direto na loja.
               </p>
 
               <div className="hero-buttons">

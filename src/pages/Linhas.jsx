@@ -10,14 +10,12 @@ import './Linhas.css';
 export default function Linhas() {
   useScrollReveal();
 
-  // Agrupa produtos por linha; mostra só as linhas que já têm produto
+  // Agrupa produtos por linha; mostra TODAS as linhas (as sem produto ficam "em breve")
   const grupos = useMemo(() => {
-    return linhas
-      .map((linha) => ({
-        linha,
-        itens: products.filter((p) => p.linha === linha.id && p.active),
-      }))
-      .filter((g) => g.itens.length > 0);
+    return linhas.map((linha) => ({
+      linha,
+      itens: products.filter((p) => p.linha === linha.id && p.active),
+    }));
   }, []);
 
   return (
@@ -47,11 +45,18 @@ export default function Linhas() {
               <p className="linha-bloco__desc">{linha.description}</p>
             </div>
 
-            <div className="linha-bloco__grid">
-              {itens.map((p) => (
-                <ProductCard key={p.id} product={p} />
-              ))}
-            </div>
+            {itens.length > 0 ? (
+              <div className="linha-bloco__grid">
+                {itens.map((p) => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
+              </div>
+            ) : (
+              <div className="linha-bloco__soon">
+                <span className="linha-bloco__soon-badge">Em breve</span>
+                <p>Estamos selecionando os melhores modelos desta linha. Volte logo — ou fale no WhatsApp que indicamos o ideal pra você agora mesmo.</p>
+              </div>
+            )}
           </section>
         ))}
       </div>
