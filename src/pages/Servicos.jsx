@@ -72,7 +72,7 @@ export default function Servicos() {
             <p>Fale diretamente com o nosso laboratório técnico para tirar dúvidas ou agendar o recolhimento do aparelho.</p>
             <button 
               className="btn btn--whatsapp btn--lg"
-              onClick={() => window.open('https://wa.me/5551999999999?text=Olá, gostaria de solicitar um orçamento para conserto de celular.', '_blank')}
+              onClick={() => window.open('https://wa.me/5551983215850?text=Olá, gostaria de solicitar um orçamento para conserto de celular.', '_blank')}
             >
               Iniciar Conversa no WhatsApp
             </button>

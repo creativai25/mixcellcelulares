@@ -6,13 +6,13 @@
 /* ── Hero Section ── */
 .hero-section {
   position: relative;
-  min-height: calc(100vh - 96px);
+  min-height: calc(100vh - 140px);
   background: radial-gradient(circle at 75% 20%, rgba(31, 162, 255, 0.14), transparent 45%),
               radial-gradient(circle at 10% 90%, rgba(95, 224, 255, 0.07), transparent 40%),
               linear-gradient(185deg, #0A0E13, #090C11);
   display: flex;
-  align-items: center;
-  padding: 120px 0 80px;
+  align-items: flex-start;
+  padding: 40px 0 72px;
 }
 
 .hero-section__inner {

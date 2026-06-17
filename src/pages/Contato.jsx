@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PageWrapper from '../components/Layout/PageWrapper';
-import { MapPin, Phone, Mail, Clock, MessageSquare, Send, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, MessageSquare, Send, CheckCircle2, Instagram } from 'lucide-react';
 import './Contato.css';
 
 export default function Contato() {
@@ -52,11 +52,11 @@ export default function Contato() {
                   <MapPin size={20} className="text-sky" />
                 </div>
                 <div>
-                  <h4>Nosso Laboratório</h4>
-                  <p>Canoas / RS — Brasil</p>
-                  <a 
-                    href="https://maps.google.com" 
-                    target="_blank" 
+                  <h4>Nossa Loja / Assistência</h4>
+                  <p>Rua Júlio de Castilhos, 634 — Canoas / RS</p>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Rua+Julio+de+Castilhos+634+Canoas+RS"
+                    target="_blank"
                     rel="noreferrer"
                     className="contato-info-item__link"
                   >
@@ -71,9 +71,9 @@ export default function Contato() {
                 </div>
                 <div>
                   <h4>WhatsApp e Telefone</h4>
-                  <p>(51) 99999-9999</p>
+                  <p>(51) 98321-5850</p>
                   <a 
-                    href="https://wa.me/5551999999999" 
+                    href="https://wa.me/5551983215850" 
                     target="_blank" 
                     rel="noreferrer"
                     className="contato-info-item__link text-green"
@@ -89,7 +89,25 @@ export default function Contato() {
                 </div>
                 <div>
                   <h4>E-mail Oficial</h4>
-                  <p>contato@mixcellcelulares.shop</p>
+                  <p>mixassistencia@gmail.com</p>
+                </div>
+              </div>
+
+              <div className="contato-info-item">
+                <div className="contato-info-item__icon">
+                  <Instagram size={20} className="text-sky" />
+                </div>
+                <div>
+                  <h4>Instagram</h4>
+                  <p>@mixcellassistencia</p>
+                  <a
+                    href="https://www.instagram.com/mixcellassistencia/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="contato-info-item__link"
+                  >
+                    Seguir no Instagram →
+                  </a>
                 </div>
               </div>
 
@@ -99,8 +117,8 @@ export default function Contato() {
                 </div>
                 <div>
                   <h4>Horário de Funcionamento</h4>
-                  <p>Segunda a Sexta: 09h às 18h</p>
-                  <p>Sábado: 09h às 13h</p>
+                  <p>Segunda a Sexta: 09h às 12h e 14h às 17h</p>
+                  <p>Sábado: 09h às 12h</p>
                 </div>
               </div>
             </div>

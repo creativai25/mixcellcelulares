@@ -164,7 +164,7 @@ export default function Produto() {
               </div>
               <button 
                 className="btn btn--whatsapp btn--sm"
-                onClick={() => window.open(`https://wa.me/5551999999999?text=Olá, tenho dúvidas sobre o modelo ${product.name} ou gostaria de um orçamento de conserto.`, '_blank')}
+                onClick={() => window.open(`https://wa.me/5551983215850?text=Olá, tenho dúvidas sobre o modelo ${product.name} ou gostaria de um orçamento de conserto.`, '_blank')}
               >
                 Chamar Assistência no WhatsApp
               </button>

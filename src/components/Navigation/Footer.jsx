@@ -4,13 +4,11 @@ import './Footer.css';
 
 const categories = [
   { label: 'Celulares', slug: 'celulares' },
-  { label: 'Tablets', slug: 'tablets' },
-  { label: 'Smartwatches', slug: 'smartwatches' },
-  { label: 'Fones & Headsets', slug: 'fones' },
-  { label: 'Carregadores', slug: 'carregadores' },
-  { label: 'Capas', slug: 'capas' },
-  { label: 'Power Banks', slug: 'power-banks' },
-  { label: 'Notebooks', slug: 'notebooks' },
+  { label: 'Celulares para Idosos', slug: '60-mais' },
+  { label: 'Películas', slug: 'peliculas' },
+  { label: 'Cabos', slug: 'cabos' },
+  { label: 'Suportes Veiculares', slug: 'suportes' },
+  { label: 'Acessórios em Geral', slug: 'acessorios' },
 ];
 
 const services = [
@@ -35,8 +33,8 @@ export default function Footer() {
               <span className="footer__logo-by">by Creativ AI</span>
             </div>
             <p className="footer__tagline">
-              Quem conserta sabe o que quebra.<br />
-              Quem usa sabe o que dura.
+              Tudo num lugar só. Você economiza tempo<br />
+              e compra com confiança, indicado por quem conserta.
             </p>
             <div className="footer__rating">
               <span className="footer__stars">★★★★★</span>
@@ -44,7 +42,7 @@ export default function Footer() {
             </div>
             <button
               className="btn btn--whatsapp btn--sm footer__wa"
-              onClick={() => window.open('https://wa.me/5551999999999', '_blank')}
+              onClick={() => window.open('https://wa.me/5551983215850', '_blank')}
             >
               Falar no WhatsApp
             </button>
@@ -81,12 +79,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Endereço */}
+          {/* Contato */}
           <div className="footer__col">
-            <h4 className="footer__col-title">Endereço</h4>
+            <h4 className="footer__col-title">Contato</h4>
             <p className="footer__address">
-              Canoas/RS · Brasil<br />
-              11 anos de confiança
+              Rua Júlio de Castilhos, 634<br />
+              Canoas / RS<br /><br />
+              WhatsApp: (51) 98321-5850<br />
+              mixassistencia@gmail.com<br />
+              <a href="https://www.instagram.com/mixcellassistencia/" target="_blank" rel="noreferrer">@mixcellassistencia</a><br /><br />
+              Seg a Sex: 9h–12h e 14h–17h<br />
+              Sábado: 9h–12h
             </p>
             <div className="footer__badges">
               <span className="footer__badge">✓ Loja verificada</span>

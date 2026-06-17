@@ -240,7 +240,7 @@
 }
 
 .produto-page__support-cta {
-  background: #f8fafc;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)), var(--mc-bg-card);
   border: 1px solid var(--mc-border);
   border-radius: var(--radius-card);
   padding: 20px;
