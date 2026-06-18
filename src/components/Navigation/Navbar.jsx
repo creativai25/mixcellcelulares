@@ -34,7 +34,7 @@ export default function Navbar() {
         {/* Logo */}
         <button className="navbar__logo" onClick={() => navigate('/')}>
           <span className="navbar__logo-mix">MIXCELL</span>
-          <span className="navbar__logo-shop">SHOP</span>
+          <span className="navbar__logo-shop notranslate" translate="no">SHOP</span>
         </button>
 
         {/* Desktop links */}
