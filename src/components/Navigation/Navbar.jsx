@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
+import { categories } from '../../data/categories';
 import './Navbar.css';
 
 const navLinks = [
-  { label: 'Celulares', href: '/loja/celulares' },
   { label: 'Guia de Linhas', href: '/linhas' },
-  { label: '60+', href: '/loja/60-mais' },
-  { label: 'Películas', href: '/loja/peliculas' },
   { label: 'Serviços', href: '/servicos' },
   { label: 'Sobre', href: '/sobre' },
 ];
@@ -14,6 +13,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [catOpen, setCatOpen] = useState(false); // dropdown mobile
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,7 +23,9 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => setMenuOpen(false), [location]);
+  useEffect(() => { setMenuOpen(false); setCatOpen(false); }, [location]);
+
+  const go = (path) => { navigate(path); setMenuOpen(false); setCatOpen(false); };
 
   return (
     <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
@@ -37,6 +39,25 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="navbar__links hide-mobile">
+          {/* Dropdown Categorias */}
+          <div className="navbar__dropdown">
+            <button className={`navbar__link navbar__link--drop${location.pathname.startsWith('/loja') ? ' active' : ''}`}>
+              Categorias <ChevronDown size={15} className="navbar__chevron" />
+            </button>
+            <div className="navbar__dropdown-panel">
+              <div className="navbar__dropdown-grid">
+                {categories.map((c) => (
+                  <button key={c.slug} className="navbar__dropdown-item" onClick={() => navigate(`/loja/${c.slug}`)}>
+                    {c.label}
+                  </button>
+                ))}
+              </div>
+              <button className="navbar__dropdown-all" onClick={() => navigate('/loja')}>
+                Ver loja completa →
+              </button>
+            </div>
+          </div>
+
           {navLinks.map(link => (
             <button
               key={link.href}
@@ -79,13 +100,30 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="navbar__mobile-menu">
+          {/* Categorias expansível */}
+          <button
+            className="navbar__mobile-link navbar__mobile-cat-toggle"
+            onClick={() => setCatOpen(!catOpen)}
+          >
+            Categorias <ChevronDown size={16} style={{ transform: catOpen ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }} />
+          </button>
+          {catOpen && (
+            <div className="navbar__mobile-cats">
+              {categories.map((c) => (
+                <button key={c.slug} className="navbar__mobile-sublink" onClick={() => go(`/loja/${c.slug}`)}>
+                  {c.label}
+                </button>
+              ))}
+            </div>
+          )}
+
           {navLinks.map(link => (
-            <button key={link.href} className="navbar__mobile-link" onClick={() => navigate(link.href)}>
+            <button key={link.href} className="navbar__mobile-link" onClick={() => go(link.href)}>
               {link.label}
             </button>
           ))}
           <div className="navbar__mobile-actions">
-            <button className="btn btn--primary" onClick={() => navigate('/loja')}>Ver loja completa</button>
+            <button className="btn btn--primary" onClick={() => go('/loja')}>Ver loja completa</button>
             <button className="btn btn--whatsapp" onClick={() => window.open('https://wa.me/5551983215850','_blank')}>
               Falar no WhatsApp
             </button>
