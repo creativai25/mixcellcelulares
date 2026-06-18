@@ -22,7 +22,7 @@ export default function Footer() {
           <div className="footer__brand">
             <div className="footer__logo">
               <span className="footer__logo-mix">MIXCELL</span>
-              <span className="footer__logo-by">by Creativ AI</span>
+              <span className="footer__logo-shop">SHOP</span>
             </div>
             <p className="footer__tagline">
               Tudo num lugar só. Você economiza tempo<br />
