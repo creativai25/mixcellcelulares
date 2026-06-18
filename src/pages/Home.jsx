@@ -6,7 +6,6 @@ import ScrollRow from '../components/UI/ScrollRow';
 import ProductCard from '../components/UI/ProductCard';
 import ProductCardWide from '../components/UI/ProductCardWide';
 import TrustSection from '../components/Sections/TrustSection';
-import VideoSection from '../components/Sections/VideoSection';
 import ServicesSection from '../components/Sections/Services';
 import GuaranteeFAQ from '../components/Sections/GuaranteeFAQ';
 import { products } from '../data/products';
@@ -159,9 +158,6 @@ export default function Home() {
 
         {/* ── ASSISTÊNCIA TÉCNICA (Services Section) ── */}
         <ServicesSection />
-
-        {/* ── VÍDEOS DE REPARO ── */}
-        <VideoSection />
 
         {/* ── FAQ & GARANTIA ── */}
         <GuaranteeFAQ />
