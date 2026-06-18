@@ -1,5 +1,5 @@
 import React from 'react';
-import { Smartphone, BatteryCharging, Mic, Disc, Zap } from 'lucide-react';
+import { Smartphone, BatteryCharging, Mic, Disc, Zap, Cpu } from 'lucide-react';
 import './Services.css';
 
 const Services = () => {
@@ -38,6 +38,13 @@ const Services = () => {
       title: 'Tampa Traseira (iPhone)',
       desc: 'Troca a laser da tampa de vidro traseira do seu iPhone. Fica como novo!',
       price: 'Consulte Modelo',
+    },
+    {
+      id: 6,
+      icon: <Cpu size={40} />,
+      title: 'Sistema',
+      desc: 'Celular travando, lento, com vírus ou não liga? Fazemos formatação, atualização de software, remoção de apps maliciosos e reparo de sistema.',
+      price: 'A partir de R$ 70',
     }
   ];
 
