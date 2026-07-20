@@ -336,3 +336,61 @@
   padding: 60px 20px;
   color: #f87171;
 }
+
+/* ── Estado de redirect (Caminho B) ── */
+.busca-redirect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 24px;
+  gap: 16px;
+}
+
+.busca-redirect__icon {
+  margin-bottom: 4px;
+}
+
+.busca-redirect__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--mc-text, #e2e8f0);
+}
+
+.busca-redirect__desc {
+  font-size: 0.875rem;
+  color: var(--mc-muted, #9ca3af);
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.busca-redirect__desc strong {
+  color: var(--mc-sky, #2BA6FF);
+}
+
+.busca-redirect__btn {
+  display: inline-block;
+  margin-top: 4px;
+  background: var(--mc-sky, #2BA6FF);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.busca-redirect__btn:hover {
+  background: #1d8fea;
+  transform: translateY(-1px);
+}
+
+.busca-redirect__hint {
+  font-size: 0.75rem;
+  color: var(--mc-muted, #6b7280);
+  max-width: 360px;
+  line-height: 1.5;
+  margin-top: 8px;
+}
