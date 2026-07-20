@@ -7,12 +7,17 @@ export default async function handler(req, res) {
   const code = req.query.code;
 
   if (!code) {
+    const redirectUri = encodeURIComponent('https://mixcellcelulares.shop/api/ml-callback');
+    const authUrl = `https://auth.mercadolivre.com.br/authorization?response_type=code&client_id=${process.env.ML_CLIENT_ID}&redirect_uri=${redirectUri}`;
     return res.send(`
       <h2>Setup ML Auth</h2>
-      <p>Clique no link abaixo para autorizar o app:</p>
-      <a href="https://auth.mercadolivre.com.br/authorization?response_type=code&client_id=${process.env.ML_CLIENT_ID}&redirect_uri=https://mixcellcelulares.shop/api/ml-callback">
+      <p>Clique no link abaixo para autorizar o app com sua conta do Mercado Livre:</p>
+      <a href="${authUrl}" style="font-size:18px;font-weight:bold;color:#2968c8;">
         👉 Autorizar no Mercado Livre
       </a>
+      <p style="margin-top:20px;font-size:12px;color:#666;">
+        URL de Redirecionamento configurada: <code>https://mixcellcelulares.shop/api/ml-callback</code>
+      </p>
     `);
   }
 
