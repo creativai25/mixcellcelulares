@@ -7,7 +7,8 @@ import './Busca.css';
 const ML_AFF_TAG = '9E98NU-BAUS';
 
 function mlSearchUrl(q) {
-  return `https://www.mercadolivre.com.br/busca?q=${encodeURIComponent(q)}&from=affiliates&affId=${ML_AFF_TAG}`;
+  const slug = q.trim().replace(/\s+/g, '-').toLowerCase();
+  return `https://lista.mercadolivre.com.br/${encodeURIComponent(slug)}#from=affiliates&affId=${ML_AFF_TAG}`;
 }
 
 export default function Busca() {
