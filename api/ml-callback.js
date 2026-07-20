@@ -3,6 +3,7 @@
 // REMOVER após salvar o refresh_token nas env vars da Vercel
 
 export default async function handler(req, res) {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
   const code = req.query.code;
 
   if (!code) {
