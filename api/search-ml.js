@@ -105,20 +105,7 @@ export default async function handler(req, res) {
     }
 
     if (!mlRes.ok) {
-      // Fallback gracioso com produtos populares caso a busca global do ML limite por permissão de app
-      json = {
-        results: [
-          { id: 'MLB3587631985', title: `Apple iPhone 15 (128 GB) - Preto`, price: 4799, original_price: 5299, currency_id: 'BRL', thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_2X_754406-MLA71782867368_092023-F.webp', permalink: 'https://www.mercadolivre.com.br/apple-iphone-15-128-gb-preto/p/MLB24503798', shipping: { free_shipping: true, tags: ['fulfillment'] }, condition: 'new', sold_quantity: 1500, seller: { nickname: 'MIXCELL' } },
-          { id: 'MLB3587631986', title: `Samsung Galaxy S24 Ultra 256GB - Titanium Gray`, price: 5999, original_price: 6999, currency_id: 'BRL', thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_2X_897103-MLA74136365447_012024-F.webp', permalink: 'https://www.mercadolivre.com.br/samsung-galaxy-s24-ultra-256gb/p/MLB28974512', shipping: { free_shipping: true, tags: ['same_day'] }, condition: 'new', sold_quantity: 980, seller: { nickname: 'MIXCELL' } },
-          { id: 'MLB3587631987', title: `Xiaomi Redmi Note 13 Pro 5G 256GB - Preto`, price: 1899, original_price: 2199, currency_id: 'BRL', thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_2X_612845-MLA74321098765_022024-F.webp', permalink: 'https://www.mercadolivre.com.br/xiaomi-redmi-note-13-pro-5g/p/MLB31098234', shipping: { free_shipping: true, tags: ['next_day'] }, condition: 'new', sold_quantity: 2300, seller: { nickname: 'MIXCELL' } },
-          { id: 'MLB3587631988', title: `Motorola Edge 50 Pro 256GB 12GB RAM - Black`, price: 2999, original_price: 3499, currency_id: 'BRL', thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_2X_910234-MLA75432109876_032024-F.webp', permalink: 'https://www.mercadolivre.com.br/motorola-edge-50-pro-256gb/p/MLB32987102', shipping: { free_shipping: true, tags: ['fulfillment'] }, condition: 'new', sold_quantity: 640, seller: { nickname: 'MIXCELL' } },
-        ].filter(item => item.title.toLowerCase().includes(q.toLowerCase()) || q.length <= 3)
-      };
-      if (json.results.length === 0) {
-        json.results = [
-          { id: 'MLB3587631989', title: `${q.toUpperCase()} - Produto em Estoque Mix Cell`, price: 1299, original_price: 1499, currency_id: 'BRL', thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_2X_754406-MLA71782867368_092023-F.webp', permalink: 'https://www.mercadolivre.com.br', shipping: { free_shipping: true, tags: ['fulfillment'] }, condition: 'new', sold_quantity: 50, seller: { nickname: 'MIXCELL' } }
-        ];
-      }
+      json = { results: [] };
     } else {
       json = await mlRes.json();
     }
