@@ -9,28 +9,46 @@ const TOKEN_URL   = 'https://api.mercadolibre.com/oauth/token';
 const cache = new Map();
 const CACHE_TTL = 5 * 60 * 1000;
 
-// Cache do access token — renovado automaticamente antes de expirar
+// Cache do access token e refresh token atualizado
 let cachedToken = null;
-let tokenExpiry  = 0;
+let tokenExpiry = 0;
+let currentRefreshToken = process.env.ML_REFRESH_TOKEN;
 
 async function getAccessToken() {
   if (cachedToken && Date.now() < tokenExpiry - 60_000) return cachedToken;
 
+  const refreshToken = currentRefreshToken || process.env.ML_REFRESH_TOKEN;
+
+  const params = refreshToken
+    ? {
+        grant_type: 'refresh_token',
+        client_id: process.env.ML_CLIENT_ID,
+        client_secret: process.env.ML_CLIENT_SECRET,
+        refresh_token: refreshToken,
+      }
+    : {
+        grant_type: 'client_credentials',
+        client_id: process.env.ML_CLIENT_ID,
+        client_secret: process.env.ML_CLIENT_SECRET,
+      };
+
   const res = await fetch(TOKEN_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      grant_type:    'client_credentials',
-      client_id:     process.env.ML_CLIENT_ID,
-      client_secret: process.env.ML_CLIENT_SECRET,
-    }),
+    body: new URLSearchParams(params),
   });
 
-  if (!res.ok) throw new Error(`Token ML: ${res.status}`);
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`Token ML (${res.status}): ${errText}`);
+  }
 
-  const data   = await res.json();
-  cachedToken  = data.access_token;
-  tokenExpiry  = Date.now() + data.expires_in * 1000;
+  const data = await res.json();
+  cachedToken = data.access_token;
+  tokenExpiry = Date.now() + data.expires_in * 1000;
+  if (data.refresh_token) {
+    currentRefreshToken = data.refresh_token;
+  }
   return cachedToken;
 }
 
