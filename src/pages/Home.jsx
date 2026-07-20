@@ -14,6 +14,7 @@ import { useCounter } from '../hooks/useCounter';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { ArrowRight, Smartphone, ShieldAlert, BadgeCheck } from 'lucide-react';
 import * as Icons from 'lucide-react';
+import SearchBar from '../components/UI/SearchBar';
 import './Home.css';
 
 export default function Home() {
@@ -61,12 +62,17 @@ export default function Home() {
                 Reunimos os celulares e acessórios que valem a pena num lugar só — selecionados e indicados por quem conserta há 11 anos. Você economiza tempo, evita cilada e compra com confiança, direto na loja.
               </p>
 
+              {/* Barra de comparação de preços */}
+              <div className="hero-search-wrap">
+                <SearchBar />
+              </div>
+
               <div className="hero-buttons">
                 <button className="btn btn--primary" onClick={() => navigate('/loja')}>
                   Ver Loja e Ofertas <ArrowRight size={18} />
                 </button>
-                <button 
-                  className="btn btn--secondary" 
+                <button
+                  className="btn btn--secondary"
                   onClick={() => document.getElementById('servicos').scrollIntoView({ behavior: 'smooth' })}
                 >
                   Solicitar Conserto

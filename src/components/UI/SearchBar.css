@@ -1,0 +1,79 @@
+.searchbar {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.searchbar__inner {
+  display: flex;
+  align-items: center;
+  background: var(--mc-bg-card, #1B232E);
+  border: 1.5px solid rgba(43, 166, 255, 0.25);
+  border-radius: 14px;
+  padding: 6px 6px 6px 16px;
+  gap: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.searchbar__inner:focus-within {
+  border-color: var(--mc-sky, #2BA6FF);
+  box-shadow: 0 0 0 3px rgba(43, 166, 255, 0.15);
+}
+
+.searchbar__icon {
+  color: var(--mc-muted, #6b7280);
+  flex-shrink: 0;
+}
+
+.searchbar__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: var(--mc-text, #e2e8f0);
+  min-width: 0;
+  padding: 6px 0;
+}
+
+.searchbar__input::placeholder {
+  color: var(--mc-muted, #6b7280);
+}
+
+/* Remove browser-native search 'x' button */
+.searchbar__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.searchbar__btn {
+  flex-shrink: 0;
+  border-radius: 10px !important;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+
+/* Compact variant (usado na navbar de resultados) */
+.searchbar--compact .searchbar__inner {
+  border-radius: 10px;
+  padding: 4px 4px 4px 12px;
+}
+
+.searchbar--compact .searchbar__input {
+  font-size: 0.875rem;
+  padding: 4px 0;
+}
+
+.searchbar--compact .searchbar__btn {
+  padding: 7px 12px;
+  border-radius: 8px !important;
+}
+
+@media (max-width: 480px) {
+  .searchbar__input::placeholder {
+    font-size: 0.8rem;
+  }
+  .searchbar__btn {
+    padding: 10px 14px;
+    font-size: 0.8rem;
+  }
+}

@@ -20,6 +20,7 @@ const Sobre     = React.lazy(() => import('./pages/Sobre'));
 const Contato   = React.lazy(() => import('./pages/Contato'));
 const Privacidade = React.lazy(() => import('./pages/Privacidade'));
 const Termos    = React.lazy(() => import('./pages/Termos'));
+const Busca     = React.lazy(() => import('./pages/Busca'));
 
 const Fallback = () => (
   <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -54,6 +55,7 @@ function App() {
                   <Route path="/contato"                         element={<Contato />} />
                   <Route path="/privacidade"                     element={<Privacidade />} />
                   <Route path="/termos"                          element={<Termos />} />
+                  <Route path="/busca"                           element={<Busca />} />
                   {/* 404 */}
                   <Route path="*" element={
                     <div style={{ textAlign:'center', padding:'80px 20px' }}>
