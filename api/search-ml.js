@@ -73,10 +73,19 @@ export default async function handler(req, res) {
   let json;
   try {
     const token = await getAccessToken();
-    const url   = `${SEARCH_URL}?q=${encodeURIComponent(q)}&limit=${limit}&sort=relevance`;
-    const mlRes = await fetch(url, {
+
+    // Tenta com Authorization header (padrão OAuth2)
+    let url = `${SEARCH_URL}?q=${encodeURIComponent(q)}&limit=${limit}&sort=relevance`;
+    let mlRes = await fetch(url, {
       headers: { accept: 'application/json', Authorization: `Bearer ${token}` },
     });
+
+    // Fallback: passa o token como query param (padrão legado ML)
+    if (mlRes.status === 403) {
+      url = `${SEARCH_URL}?q=${encodeURIComponent(q)}&limit=${limit}&sort=relevance&access_token=${token}`;
+      mlRes = await fetch(url, { headers: { accept: 'application/json' } });
+    }
+
     if (!mlRes.ok) return res.status(mlRes.status).json({ error: `Erro ML: ${mlRes.status}` });
     json = await mlRes.json();
   } catch (err) {

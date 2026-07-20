@@ -13,6 +13,7 @@ export default async function handler(req, res) {
   };
 
   try {
+    // 1. Pega o token
     const tokenRes = await fetch('https://api.mercadolibre.com/oauth/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -22,8 +23,30 @@ export default async function handler(req, res) {
         client_secret: clientSecret,
       }),
     });
-    const tokenBody = await tokenRes.text();
-    return res.json({ info, tokenStatus: tokenRes.status, tokenBody });
+    const tokenData = await tokenRes.json();
+    const token = tokenData.access_token || '';
+
+    // 2. Testa busca com Authorization header
+    const s1 = await fetch(
+      'https://api.mercadolibre.com/sites/MLB/search?q=celular&limit=1',
+      { headers: { accept: 'application/json', Authorization: `Bearer ${token}` } }
+    );
+    const b1 = await s1.text();
+
+    // 3. Testa busca com access_token na query
+    const s2 = await fetch(
+      `https://api.mercadolibre.com/sites/MLB/search?q=celular&limit=1&access_token=${token}`,
+      { headers: { accept: 'application/json' } }
+    );
+    const b2 = await s2.text();
+
+    return res.json({
+      info,
+      tokenStatus:   tokenRes.status,
+      tokenOk:       !!token,
+      search1_header: { status: s1.status, body: b1.substring(0, 200) },
+      search2_query:  { status: s2.status, body: b2.substring(0, 200) },
+    });
   } catch (err) {
     return res.status(500).json({ info, error: err.message });
   }
