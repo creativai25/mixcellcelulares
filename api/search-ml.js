@@ -105,7 +105,36 @@ export default async function handler(req, res) {
     }
 
     if (!mlRes.ok) {
-      json = { results: [] };
+      // Tenta buscar os produtos anunciados na própria conta da Mix Cell (user_id 3466717427)
+      try {
+        const userItemsRes = await fetch(`https://api.mercadolibre.com/users/3466717427/items/search`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (userItemsRes.ok) {
+          const uData = await userItemsRes.json();
+          const itemIds = (uData.results || []).slice(0, limit);
+          if (itemIds.length > 0) {
+            const multRes = await fetch(`https://api.mercadolibre.com/items?ids=${itemIds.join(',')}`);
+            if (multRes.ok) {
+              const multData = await multRes.json();
+              json = {
+                results: multData
+                  .filter(m => m.code === 200 && m.body)
+                  .map(m => m.body)
+                  .filter(it => !q || it.title.toLowerCase().includes(q.toLowerCase()))
+              };
+            } else {
+              json = { results: [] };
+            }
+          } else {
+            json = { results: [] };
+          }
+        } else {
+          json = { results: [] };
+        }
+      } catch {
+        json = { results: [] };
+      }
     } else {
       json = await mlRes.json();
     }
