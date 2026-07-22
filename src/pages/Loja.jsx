@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import PageWrapper from '../components/Layout/PageWrapper';
 import ProductCard from '../components/UI/ProductCard';
 import CategoryPill from '../components/UI/CategoryPill';
-import { products } from '../data/products';
+import { products as staticProducts } from '../data/products';
 import { categories } from '../data/categories';
 import { Search, SlidersHorizontal, Trash2 } from 'lucide-react';
 import './Loja.css';
@@ -10,8 +10,24 @@ import './Loja.css';
 export default function Loja() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [dynamicProducts, setDynamicProducts] = useState([]);
 
-  // Filtra produtos com base na busca e na categoria selecionada
+  useEffect(() => {
+    fetch('/api/catalog')
+      .then((r) => r.ok ? r.json() : { products: [] })
+      .then((data) => setDynamicProducts(data.products || []))
+      .catch(() => {});
+  }, []);
+
+  const products = useMemo(() => {
+    const staticIds = new Set(staticProducts.map((p) => p.slug));
+    const merged = [...staticProducts];
+    for (const p of dynamicProducts) {
+      if (!staticIds.has(p.slug)) merged.push(p);
+    }
+    return merged;
+  }, [dynamicProducts]);
+
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
       const matchesSearch =
