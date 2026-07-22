@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Save, Printer, RotateCcw } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Save, Printer, RotateCcw, Plus, Trash2 } from 'lucide-react';
 import OSTicket from './OSTicket';
 import './OSForm.css';
 
@@ -30,10 +30,8 @@ const BLANK = {
   dataEntrada: new Date().toISOString().slice(0, 10),
   tipo: 'Conserto',
   status: 'Em análise',
-  // cliente
   clienteNome: '',
   clienteTel: '',
-  // aparelho
   item: '',
   marca: '',
   modelo: '',
@@ -41,13 +39,16 @@ const BLANK = {
   defeito: '',
   observacoes: '',
   senhaDesbloqueio: '',
-  // serviços
   servicosSelecionados: [],
   servicosValores: {},
-  // total
+  itensPersonalizados: [],
   desconto: '',
   formaPagamento: 'Dinheiro',
 };
+
+function getHistorico() {
+  return JSON.parse(localStorage.getItem('mixcell_os') || '[]');
+}
 
 export default function OSForm({ editing, onSaved }) {
   const [form, setForm] = useState({ ...BLANK, numero: gerarNumOS() });
@@ -63,8 +64,39 @@ export default function OSForm({ editing, onSaved }) {
     setSaved(false);
   }, [editing]);
 
+  // Sugestões do histórico
+  const historico = useMemo(() => getHistorico(), [saved]);
+  const marcasSugeridas = useMemo(() => {
+    const set = new Set([...MARCAS, ...historico.map(o => o.marca).filter(Boolean)]);
+    return [...set];
+  }, [historico]);
+  const modelosSugeridos = useMemo(() => {
+    const modelos = historico
+      .filter(o => !form.marca || o.marca === form.marca)
+      .map(o => o.modelo).filter(Boolean);
+    return [...new Set(modelos)];
+  }, [historico, form.marca]);
+  const descricoesSugeridas = useMemo(() => {
+    const descs = historico.flatMap(o => (o.itensPersonalizados || []).map(i => i.descricao).filter(Boolean));
+    return [...new Set(descs)];
+  }, [historico]);
+
   function set(field, value) {
     setForm(f => ({ ...f, [field]: value }));
+  }
+
+  function addItem() {
+    setForm(f => ({ ...f, itensPersonalizados: [...(f.itensPersonalizados || []), { descricao: '', valor: '' }] }));
+  }
+  function removeItem(idx) {
+    setForm(f => ({ ...f, itensPersonalizados: f.itensPersonalizados.filter((_, i) => i !== idx) }));
+  }
+  function setItem(idx, field, value) {
+    setForm(f => {
+      const items = [...(f.itensPersonalizados || [])];
+      items[idx] = { ...items[idx], [field]: value };
+      return { ...f, itensPersonalizados: items };
+    });
   }
 
   function toggleServico(nome) {
@@ -81,9 +113,9 @@ export default function OSForm({ editing, onSaved }) {
   }
 
   function totalServicos() {
-    return form.servicosSelecionados.reduce((acc, nome) => {
-      return acc + (parseFloat(form.servicosValores[nome] || 0));
-    }, 0);
+    const fixos = form.servicosSelecionados.reduce((acc, nome) => acc + parseFloat(form.servicosValores[nome] || 0), 0);
+    const livres = (form.itensPersonalizados || []).reduce((acc, i) => acc + parseFloat(i.valor || 0), 0);
+    return fixos + livres;
   }
 
   function totalFinal() {
@@ -159,14 +191,17 @@ export default function OSForm({ editing, onSaved }) {
             </div>
             <div className="os-field">
               <label>Marca</label>
-              <select value={form.marca} onChange={e => set('marca', e.target.value)}>
-                <option value="">Selecionar...</option>
-                {MARCAS.map(m => <option key={m}>{m}</option>)}
-              </select>
+              <input list="dl-marcas" value={form.marca} onChange={e => set('marca', e.target.value)} placeholder="Samsung, Apple..." autoComplete="off" />
+              <datalist id="dl-marcas">
+                {marcasSugeridas.map(m => <option key={m} value={m} />)}
+              </datalist>
             </div>
             <div className="os-field">
               <label>Modelo</label>
-              <input value={form.modelo} onChange={e => set('modelo', e.target.value)} placeholder="Ex: Galaxy S21" />
+              <input list="dl-modelos" value={form.modelo} onChange={e => set('modelo', e.target.value)} placeholder="Ex: Galaxy A34" autoComplete="off" />
+              <datalist id="dl-modelos">
+                {modelosSugeridos.map(m => <option key={m} value={m} />)}
+              </datalist>
             </div>
           </div>
           <div className="os-row">
@@ -216,6 +251,47 @@ export default function OSForm({ editing, onSaved }) {
               </label>
             ))}
           </div>
+        </section>
+
+        {/* ── ITENS PERSONALIZADOS ── */}
+        <section className="os-section">
+          <div className="os-itens-header">
+            <h3>Itens do Orçamento</h3>
+            <button type="button" className="btn-add-item" onClick={addItem}>
+              <Plus size={14} /> Adicionar item
+            </button>
+          </div>
+          <datalist id="dl-descricoes">
+            {descricoesSugeridas.map(d => <option key={d} value={d} />)}
+          </datalist>
+          {(form.itensPersonalizados || []).length === 0 ? (
+            <p className="os-itens-empty">Nenhum item. Clique em "Adicionar item" para inserir serviços livres.</p>
+          ) : (
+            <div className="os-itens-lista">
+              {(form.itensPersonalizados || []).map((item, idx) => (
+                <div key={idx} className="os-item-row">
+                  <input
+                    list="dl-descricoes"
+                    className="os-item-desc"
+                    placeholder="Descrição do serviço ou peça..."
+                    value={item.descricao}
+                    onChange={e => setItem(idx, 'descricao', e.target.value)}
+                    autoComplete="off"
+                  />
+                  <input
+                    type="number" min="0" step="0.01"
+                    className="os-item-valor"
+                    placeholder="R$ 0,00"
+                    value={item.valor}
+                    onChange={e => setItem(idx, 'valor', e.target.value)}
+                  />
+                  <button type="button" className="btn-remove-item" onClick={() => removeItem(idx)}>
+                    <Trash2 size={14} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* ── TOTAL ── */}
