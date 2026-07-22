@@ -27,6 +27,14 @@ export default function Produto() {
       .finally(() => setLoading(false));
   }, []);
 
+  // Re-aciona o reveal após o produto dinâmico carregar
+  useEffect(() => {
+    if (!loading) {
+      const els = document.querySelectorAll('.reveal:not(.visible)');
+      els.forEach((el) => el.classList.add('visible'));
+    }
+  }, [loading]);
+
   const allProducts = useMemo(() => {
     const staticIds = new Set(staticProducts.map((p) => p.slug));
     const merged = [...staticProducts];
