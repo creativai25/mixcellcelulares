@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PageWrapper from '../components/Layout/PageWrapper';
 import ProductCard from '../components/UI/ProductCard';
-import { products } from '../data/products';
+import { products as staticProducts } from '../data/products';
 import { categories } from '../data/categories';
 import { ArrowLeft } from 'lucide-react';
 import './Categoria.css';
@@ -10,6 +10,23 @@ import './Categoria.css';
 export default function Categoria() {
   const { categoria } = useParams();
   const navigate = useNavigate();
+  const [dynamicProducts, setDynamicProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/catalog')
+      .then((r) => r.ok ? r.json() : { products: [] })
+      .then((data) => setDynamicProducts(data.products || []))
+      .catch(() => {});
+  }, []);
+
+  const products = useMemo(() => {
+    const staticIds = new Set(staticProducts.map((p) => p.slug));
+    const merged = [...staticProducts];
+    for (const p of dynamicProducts) {
+      if (!staticIds.has(p.slug)) merged.push(p);
+    }
+    return merged;
+  }, [dynamicProducts]);
 
   // Encontra a categoria atual com base no slug
   const currentCategory = categories.find((c) => c.slug === categoria);
