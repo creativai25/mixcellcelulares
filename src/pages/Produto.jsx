@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PageWrapper from '../components/Layout/PageWrapper';
 import Comparador from '../components/Sections/Comparador';
 import ScrollRow from '../components/UI/ScrollRow';
 import ProductCard from '../components/UI/ProductCard';
-import { products } from '../data/products';
+import { products as staticProducts } from '../data/products';
 import { categories } from '../data/categories';
 import { ArrowLeft, CheckCircle, HelpCircle, Shield, ShoppingCart, Info } from 'lucide-react';
 import * as Icons from 'lucide-react';
@@ -16,16 +16,44 @@ export default function Produto() {
   const navigate = useNavigate();
   useScrollReveal();
 
+  const [dynamicProducts, setDynamicProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/catalog')
+      .then((r) => r.ok ? r.json() : { products: [] })
+      .then((data) => setDynamicProducts(data.products || []))
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
+
+  const allProducts = useMemo(() => {
+    const staticIds = new Set(staticProducts.map((p) => p.slug));
+    const merged = [...staticProducts];
+    for (const p of dynamicProducts) {
+      if (!staticIds.has(p.slug)) merged.push(p);
+    }
+    return merged;
+  }, [dynamicProducts]);
+
   // Encontra o produto atual
   const product = useMemo(() => {
-    return products.find((p) => p.slug === slug && p.active);
-  }, [slug]);
+    return allProducts.find((p) => p.slug === slug && p.active);
+  }, [allProducts, slug]);
 
   // Encontra produtos relacionados para o cross-sell
   const crossSellProducts = useMemo(() => {
     if (!product) return [];
-    return products.filter((p) => product.crossSell.includes(p.slug) && p.active);
-  }, [product]);
+    return allProducts.filter((p) => (product.crossSell || []).includes(p.slug) && p.active);
+  }, [product, allProducts]);
+
+  if (loading) {
+    return (
+      <div style={{ textAlign: 'center', padding: '100px 20px', color: 'var(--mc-muted)' }}>
+        Carregando produto...
+      </div>
+    );
+  }
 
   if (!product) {
     return (
