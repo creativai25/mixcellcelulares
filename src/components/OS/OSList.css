@@ -92,6 +92,10 @@
 }
 .os-btns button:hover { background: #1e1e1e; color: #fff; border-color: #444; }
 .os-btns .btn-del:hover { background: #2a1515; color: #e74c3c; border-color: #e74c3c; }
+.os-btns .btn-encerrar:hover { background: #0d2a1a; color: #10b981; border-color: #10b981; }
+
+.os-row-clickable { cursor: pointer; }
+.os-row-clickable:hover td { background: #1a1a2e !important; }
 
 .oslist-empty { text-align: center; padding: 48px; color: #555; }
 .oslist-count { font-size: 0.78rem; color: #555; text-align: right; }

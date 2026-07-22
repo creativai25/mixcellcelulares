@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Edit2, Trash2, Printer } from 'lucide-react';
+import { Search, Edit2, Trash2, Printer, CheckCircle } from 'lucide-react';
 import OSTicket from './OSTicket';
 import './OSList.css';
 
@@ -23,10 +23,20 @@ export default function OSList({ onEdit }) {
 
   useEffect(() => { load(); }, []);
 
-  function handleDelete(numero) {
+  function handleDelete(numero, e) {
+    e.stopPropagation();
     if (!confirm(`Excluir OS Nº ${numero}?`)) return;
     const novas = JSON.parse(localStorage.getItem('mixcell_os') || '[]').filter(o => o.numero !== numero);
     localStorage.setItem('mixcell_os', JSON.stringify(novas));
+    load();
+  }
+
+  function handleEncerrar(os, e) {
+    e.stopPropagation();
+    if (!confirm(`Encerrar OS Nº ${os.numero}? Status será alterado para "Entregue".`)) return;
+    const todas = JSON.parse(localStorage.getItem('mixcell_os') || '[]');
+    const atualizadas = todas.map(o => o.numero === os.numero ? { ...o, status: 'Entregue' } : o);
+    localStorage.setItem('mixcell_os', JSON.stringify(atualizadas));
     load();
   }
 
@@ -95,7 +105,7 @@ export default function OSList({ onEdit }) {
               </thead>
               <tbody>
                 {filtradas.map(os => (
-                  <tr key={os.numero}>
+                  <tr key={os.numero} onClick={() => onEdit(os)} className="os-row-clickable">
                     <td className="os-num">#{os.numero}</td>
                     <td className="os-date">{os.dataEntrada}</td>
                     <td>
@@ -111,10 +121,15 @@ export default function OSList({ onEdit }) {
                       </span>
                     </td>
                     <td>
-                      <div className="os-btns">
-                        <button title="Imprimir" onClick={() => handlePrint(os)}><Printer size={15} /></button>
-                        <button title="Editar" onClick={() => onEdit(os)}><Edit2 size={15} /></button>
-                        <button title="Excluir" className="btn-del" onClick={() => handleDelete(os.numero)}><Trash2 size={15} /></button>
+                      <div className="os-btns" onClick={e => e.stopPropagation()}>
+                        <button title="Imprimir" onClick={e => { e.stopPropagation(); handlePrint(os); }}><Printer size={15} /></button>
+                        <button title="Editar" onClick={e => { e.stopPropagation(); onEdit(os); }}><Edit2 size={15} /></button>
+                        {os.status !== 'Entregue' && (
+                          <button title="Encerrar" className="btn-encerrar" onClick={e => handleEncerrar(os, e)}>
+                            <CheckCircle size={15} />
+                          </button>
+                        )}
+                        <button title="Excluir" className="btn-del" onClick={e => handleDelete(os.numero, e)}><Trash2 size={15} /></button>
                       </div>
                     </td>
                   </tr>
