@@ -97,6 +97,17 @@
 .os-row-clickable { cursor: pointer; }
 .os-row-clickable:hover td { background: #1a1a2e !important; }
 
+.tipo-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.tipo-badge--orcamento { background: #2a1f00; color: #fbbf24; border: 1px solid #f59e0b44; }
+.tipo-badge--conserto  { background: #0f1e3d; color: #93c5fd; border: 1px solid #3b82f644; }
+
 .oslist-empty { text-align: center; padding: 48px; color: #555; }
 .oslist-count { font-size: 0.78rem; color: #555; text-align: right; }
 

@@ -109,8 +109,12 @@
   padding: 6px 0;
 }
 
-/* ── STATUS ── */
+/* ── TIPO + STATUS ── */
+.os-tipo-status-row { display: flex; gap: 40px; flex-wrap: wrap; }
+.os-tipo-status-row > div { flex: 1; min-width: 200px; }
 .os-status-group { display: flex; gap: 10px; flex-wrap: wrap; }
+.tipo-opt.tipo-orcamento.active { border-color: #f59e0b; background: #2a1f00; color: #fbbf24; }
+.tipo-opt.tipo-conserto.active  { border-color: #3b82f6; background: #0f1e3d; color: #93c5fd; }
 .status-opt {
   display: flex; align-items: center; gap: 8px;
   padding: 8px 16px;

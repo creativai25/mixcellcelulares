@@ -95,6 +95,7 @@ export default function OSList({ onEdit }) {
                 <tr>
                   <th>Nº OS</th>
                   <th>Data</th>
+                  <th>Tipo</th>
                   <th>Cliente</th>
                   <th>Aparelho</th>
                   <th>Defeito</th>
@@ -108,6 +109,11 @@ export default function OSList({ onEdit }) {
                   <tr key={os.numero} onClick={() => onEdit(os)} className="os-row-clickable">
                     <td className="os-num">#{os.numero}</td>
                     <td className="os-date">{os.dataEntrada}</td>
+                    <td>
+                      <span className={`tipo-badge tipo-badge--${os.tipo === 'Orçamento' ? 'orcamento' : 'conserto'}`}>
+                        {os.tipo || 'Conserto'}
+                      </span>
+                    </td>
                     <td>
                       <div className="os-cliente-nome">{os.clienteNome}</div>
                       {os.clienteTel && <div className="os-cliente-tel">{os.clienteTel}</div>}

@@ -28,6 +28,7 @@ function gerarNumOS() {
 const BLANK = {
   numero: '',
   dataEntrada: new Date().toISOString().slice(0, 10),
+  tipo: 'Conserto',
   status: 'Em análise',
   // cliente
   clienteNome: '',
@@ -238,16 +239,31 @@ export default function OSForm({ editing, onSaved }) {
           </div>
         </section>
 
-        {/* ── STATUS ── */}
+        {/* ── TIPO + STATUS ── */}
         <section className="os-section">
-          <h3>Status</h3>
-          <div className="os-status-group">
-            {STATUS_OPTS.map(s => (
-              <label key={s} className={`status-opt ${form.status === s ? 'active' : ''}`}>
-                <input type="radio" name="status" value={s} checked={form.status === s} onChange={() => set('status', s)} />
-                {s}
-              </label>
-            ))}
+          <div className="os-tipo-status-row">
+            <div>
+              <h3>Tipo</h3>
+              <div className="os-status-group">
+                {['Orçamento', 'Conserto'].map(t => (
+                  <label key={t} className={`status-opt tipo-opt tipo-${t === 'Orçamento' ? 'orcamento' : 'conserto'} ${form.tipo === t ? 'active' : ''}`}>
+                    <input type="radio" name="tipo" value={t} checked={form.tipo === t} onChange={() => set('tipo', t)} />
+                    {t}
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3>Status</h3>
+              <div className="os-status-group">
+                {STATUS_OPTS.map(s => (
+                  <label key={s} className={`status-opt ${form.status === s ? 'active' : ''}`}>
+                    <input type="radio" name="status" value={s} checked={form.status === s} onChange={() => set('status', s)} />
+                    {s}
+                  </label>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       </form>
