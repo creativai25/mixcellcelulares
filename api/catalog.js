@@ -53,7 +53,7 @@ export default async function handler(req, res) {
       image: row.imagem_url || null,
       imageAlt: row.nome,
       marketplaces: {
-        mercadolivre: {
+        [row.marketplace || 'mercadolivre']: {
           url: row.link_afiliado,
           preco: row.preco || 0,
           frete: 0,
