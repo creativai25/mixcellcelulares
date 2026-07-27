@@ -138,14 +138,62 @@ export default async function handler(req, res) {
         res.status(400).json({ error: 'URL não permitida (só Mercado Livre).' });
         return;
       }
-      const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
-      const r = await fetch(target, { headers: { 'User-Agent': UA, accept: 'text/html' }, redirect: 'follow' });
-      const html = await r.text();
+
+      // Tenta UAs em ordem: crawlers sociais primeiro (geram SSR com og tags + preço),
+      // depois Chrome como fallback. Para quando não recebe a página de captcha.
+      const agents = [
+        'Twitterbot/1.0',
+        'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)',
+        'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
+      ];
+      let html = '';
+      for (const ua of agents) {
+        const r = await fetch(target, {
+          headers: { 'User-Agent': ua, accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' },
+          redirect: 'follow',
+        });
+        html = await r.text();
+        if (!html.includes('suspicious-traffic-frontend')) break;
+      }
+
       const og = (html.match(/og:image"\s+content="([^"]+)"/i) || [])[1] || null;
       const title = (html.match(/og:title"\s+content="([^"]+)"/i) || [])[1] || null;
-      // pega também algumas imagens 2X da galeria (D_Q_NP_2X) como bônus
       const gallery = [...new Set((html.match(/https:\/\/http2\.mlstatic\.com\/D_Q_NP_2X_[A-Za-z0-9_-]+\.(?:webp|jpg)/g) || []))].slice(0, 8);
-      res.status(200).json({ og, title, gallery });
+
+      // Extração de preço: tenta meta tag, JSON-LD e inline JSON
+      let price = null;
+
+      const priceMetaM = html.match(/product:price:amount"\s+content="([^"]+)"/i)
+                      || html.match(/content="([^"]+)"\s+property="product:price:amount"/i);
+      if (priceMetaM) price = parseFloat(priceMetaM[1].replace(',', '.')) || null;
+
+      if (!price) {
+        const scriptIdx = html.indexOf('application/ld+json');
+        if (scriptIdx > -1) {
+          const scriptStart = html.lastIndexOf('<script', scriptIdx);
+          const scriptEnd = html.indexOf('</script>', scriptIdx);
+          if (scriptStart > -1 && scriptEnd > scriptStart) {
+            const jsonContent = html.slice(html.indexOf('>', scriptStart) + 1, scriptEnd).trim();
+            try {
+              const schema = JSON.parse(jsonContent);
+              const offer = schema && schema.offers;
+              const p = Array.isArray(offer) ? offer[0] && offer[0].price : offer && offer.price;
+              if (p) price = parseFloat(p) || null;
+            } catch {}
+          }
+        }
+      }
+
+      if (!price) {
+        const inlineM = html.match(/"price"\s*:\s*([\d]+(?:\.\d{1,2})?)/);
+        if (inlineM) {
+          const v = parseFloat(inlineM[1]);
+          if (v > 1 && v < 999999) price = v;
+        }
+      }
+
+      res.status(200).json({ og, title, gallery, price });
       return;
     }
 
