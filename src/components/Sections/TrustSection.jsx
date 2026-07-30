@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, Heart, Sparkles } from 'lucide-react';
+import { ShieldCheck, Award, BadgePercent } from 'lucide-react';
 import './TrustSection.css';
 
 export default function TrustSection() {
@@ -7,51 +7,51 @@ export default function TrustSection() {
     <section className="trust-section section section--soft reveal">
       <div className="container">
         <div className="trust-section__grid">
-          {/* Esquerda: Mensagem institucional / Quote do Fundador */}
+
+          {/* Left: Quote / Brand message */}
           <div className="trust-section__content">
-            <span className="badge badge--mix-cell">11 anos de tradição</span>
-            <h2 className="trust-section__title">Por que confiar na Mix Cell?</h2>
-            
+            <span className="badge badge--mix-cell">Por que a Mix Cell?</span>
+            <h2 className="trust-section__title">Compramos certo,<br />você economiza.</h2>
             <div className="trust-section__quote">
               <p className="trust-section__quote-text">
-                "Quem conserta sabe o que quebra, quem usa sabe o que dura. Na bancada, nós vemos quais marcas dão defeito mais rápido. Por isso, nossa loja de afiliados indica apenas o que realmente vale o seu dinheiro."
+                "Cada produto da nossa loja é escolhido por quem realmente usa e testa. Sem patrocínio de marcas, sem indicação genérica — só o que vale o seu dinheiro nos maiores marketplaces do Brasil."
               </p>
               <div className="trust-section__author">
-                <strong>Equipe Técnica Mix Cell</strong>
-                <span>Canoas / RS</span>
+                <strong>Equipe Mix Cell</strong>
+                <span>Canoas / RS — Afiliados desde 2013</span>
               </div>
             </div>
           </div>
 
-          {/* Direita: Badges de Confiança */}
+          {/* Right: Trust badges */}
           <div className="trust-section__badges">
             <div className="trust-badge card">
               <div className="trust-badge__icon-wrapper">
-                <ShieldCheck size={24} className="text-sky" />
+                <ShieldCheck size={22} style={{ color: 'var(--mc-blue)' }} />
               </div>
               <div className="trust-badge__text">
-                <h4>Filtro de Durabilidade</h4>
-                <p>Nenhum produto genérico entra na nossa lista. Apenas itens aprovados em nossos testes de estresse.</p>
+                <h4>Seleção Rigorosa</h4>
+                <p>Nenhum produto genérico ou de qualidade duvidosa entra na lista. Apenas itens aprovados pela nossa curadoria.</p>
               </div>
             </div>
 
             <div className="trust-badge card">
               <div className="trust-badge__icon-wrapper">
-                <Award size={24} className="text-sky" />
+                <Award size={22} style={{ color: 'var(--mc-blue)' }} />
               </div>
               <div className="trust-badge__text">
                 <h4>Afiliados Oficiais</h4>
-                <p>Links diretos e seguros integrados com a Amazon, Shopee, Mercado Livre, Magalu e AliExpress.</p>
+                <p>Links diretos e seguros com Amazon, Shopee, Mercado Livre, Magalu e AliExpress — sem custo extra para você.</p>
               </div>
             </div>
 
             <div className="trust-badge card">
               <div className="trust-badge__icon-wrapper">
-                <Sparkles size={24} className="text-sky" />
+                <BadgePercent size={22} style={{ color: 'var(--mc-blue)' }} />
               </div>
               <div className="trust-badge__text">
-                <h4>Opinião Isenta</h4>
-                <p>Não somos patrocinados pelas marcas. Se um cabo quebra fácil ou se a bateria vicia, nós avisamos.</p>
+                <h4>Menor Preço Comparado</h4>
+                <p>Verificamos os preços automaticamente em todos os marketplaces para garantir que você sempre compre na melhor condição.</p>
               </div>
             </div>
           </div>

@@ -3,12 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { categories } from '../../data/categories';
 import './Footer.css';
 
-const services = [
-  { label: 'Conserto de iPhone', slug: 'servicos/conserto-iphone-canoas' },
-  { label: 'Troca de Tela', slug: 'servicos/troca-tela-canoas' },
-  { label: 'Serviços', slug: 'servicos' },
-];
-
 export default function Footer() {
   const navigate = useNavigate();
   const year = new Date().getFullYear();
@@ -25,12 +19,11 @@ export default function Footer() {
               <span className="footer__logo-shop notranslate" translate="no">SHOP</span>
             </div>
             <p className="footer__tagline">
-              Tudo num lugar só. Você economiza tempo<br />
-              e compra com confiança, indicado por quem conserta.
+              Tudo num lugar só. Você economiza tempo e compra com confiança — produtos selecionados por quem realmente entende.
             </p>
             <div className="footer__rating">
               <span className="footer__stars">★★★★★</span>
-              <span>4.9 · 88 avaliações · Canoas/RS</span>
+              <span>4.9 no Google · Curadoria de Confiança</span>
             </div>
             <button
               className="btn btn--whatsapp btn--sm footer__wa"
@@ -52,17 +45,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Serviços */}
+          {/* Institucional */}
           <div className="footer__col">
-            <h4 className="footer__col-title">Serviços</h4>
-            <ul className="footer__links">
-              {services.map(s => (
-                <li key={s.slug}>
-                  <button onClick={() => navigate(`/${s.slug}`)}>{s.label}</button>
-                </li>
-              ))}
-            </ul>
-            <h4 className="footer__col-title" style={{ marginTop: 20 }}>Institucional</h4>
+            <h4 className="footer__col-title">Institucional</h4>
             <ul className="footer__links">
               <li><button onClick={() => navigate('/sobre')}>Sobre nós</button></li>
               <li><button onClick={() => navigate('/contato')}>Contato</button></li>
@@ -75,13 +60,9 @@ export default function Footer() {
           <div className="footer__col">
             <h4 className="footer__col-title">Contato</h4>
             <p className="footer__address">
-              Rua Júlio de Castilhos, 634<br />
-              Canoas / RS<br /><br />
               WhatsApp: (51) 98321-5850<br />
               mixassistencia@gmail.com<br />
-              <a href="https://www.instagram.com/mixcellassistencia/" target="_blank" rel="noreferrer">@mixcellassistencia</a><br /><br />
-              Seg a Sex: 9h–12h e 14h–17h<br />
-              Sábado: 9h–12h
+              <a href="https://www.instagram.com/mixcellassistencia/" target="_blank" rel="noreferrer">@mixcellassistencia</a>
             </p>
             <div className="footer__badges">
               <span className="footer__badge">✓ Loja verificada</span>
@@ -93,7 +74,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="footer__bottom">
-          <span>© {year} Mix Cell Celulares · Todos os direitos reservados</span>
+          <span>© {year} Mix Cell Shop · Todos os direitos reservados</span>
           <span className="footer__affiliate">
             Alguns links geram comissão para a Mix Cell, sem custo extra para você.
           </span>
