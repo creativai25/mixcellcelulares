@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PageWrapper from '../components/Layout/PageWrapper';
 import HeroSlider from '../components/Sections/HeroSlider';
-import ScrollRow from '../components/UI/ScrollRow';
 import ProductCard from '../components/UI/ProductCard';
 import TrustSection from '../components/Sections/TrustSection';
 import { products } from '../data/products';
@@ -23,7 +22,10 @@ export default function Home() {
   const navigate = useNavigate();
   useScrollReveal();
 
-  const featuredProducts = products.filter((p) => p.featured && p.active);
+  const displayProducts = [
+    ...products.filter((p) => p.featured && p.active),
+    ...products.filter((p) => !p.featured && p.active),
+  ];
 
   return (
     <PageWrapper
@@ -78,16 +80,31 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── FEATURED PRODUCTS CAROUSEL ── */}
-        <section className="featured-section container reveal">
-          <ScrollRow
-            title="Destaques da Semana"
-            subtitle="Produtos com melhor custo-benefício nos maiores marketplaces do Brasil"
-          >
-            {featuredProducts.map((prod) => (
-              <ProductCard key={prod.id} product={prod} />
+        {/* ── PRODUCTS EDITORIAL GRID ── */}
+        <section className="products-section container reveal">
+          <div className="section-header">
+            <div>
+              <span className="badge badge--mix-cell">Ofertas em Destaque</span>
+              <h2 className="products-section__title">Melhores preços do dia</h2>
+              <p className="section-subtitle">Curadoria nos maiores marketplaces do Brasil — sem custo extra para você</p>
+            </div>
+          </div>
+
+          <div className="editorial-grid">
+            {displayProducts.map((prod, idx) => (
+              <ProductCard
+                key={prod.id}
+                product={prod}
+                variant={idx === 0 ? 'hero' : 'default'}
+              />
             ))}
-          </ScrollRow>
+          </div>
+
+          <div className="products-section__footer">
+            <button className="btn btn--outline" onClick={() => navigate('/loja')}>
+              Ver loja completa →
+            </button>
+          </div>
         </section>
 
         {/* ── TRUST ── */}

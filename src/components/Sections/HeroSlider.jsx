@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Play, Pause, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import './HeroSlider.css';
@@ -8,12 +8,13 @@ const slides = [
     id: 1,
     badge: 'Curadoria de Confiança',
     title: 'O produto ideal pelo menor preço do dia.',
-    subtitle: 'Reunimos os celulares e acessórios com melhor custo-benefício num lugar só. Compare preços em todos os marketplaces e economize de verdade.',
+    subtitle: 'Reunimos celulares e acessórios com melhor custo-benefício num lugar só. Compare preços em todos os marketplaces e economize de verdade.',
     btnPrimary: 'Ver Ofertas da Loja',
     btnPrimaryLink: '/loja',
     btnSecondary: 'Guia de Linhas',
     btnSecondaryLink: '/linhas',
-    hasVideo: true,
+    productImage: 'https://http2.mlstatic.com/D_NQ_NP_702537-MLA100077733515_122025-O.webp',
+    productAlt: 'Samsung Galaxy A17 5G',
   },
   {
     id: 2,
@@ -24,7 +25,8 @@ const slides = [
     btnPrimaryLink: 'https://wa.me/5551983215850',
     btnSecondary: 'Ver Loja',
     btnSecondaryLink: '/loja',
-    hasVideo: true,
+    productImage: 'https://http2.mlstatic.com/D_NQ_NP_831434-MLA96401363339_102025-O.webp',
+    productAlt: 'Apple iPhone 15',
   },
   {
     id: 3,
@@ -35,8 +37,9 @@ const slides = [
     btnPrimaryLink: '/loja',
     btnSecondary: 'Sobre a Curadoria',
     btnSecondaryLink: '/sobre',
-    hasVideo: false,
-  }
+    productImage: 'https://http2.mlstatic.com/D_NQ_NP_673808-MLA99443133132_112025-O.webp',
+    productAlt: 'Apple iPhone 16',
+  },
 ];
 
 export default function HeroSlider() {
@@ -44,7 +47,6 @@ export default function HeroSlider() {
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const navigate = useNavigate();
-  const videoRef = useRef(null);
   const duration = 6000;
 
   useEffect(() => {
@@ -63,13 +65,6 @@ export default function HeroSlider() {
     return () => clearInterval(timer);
   }, [isPlaying, current]);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      if (isPlaying) videoRef.current.play().catch(() => {});
-      else videoRef.current.pause();
-    }
-  }, [isPlaying, current]);
-
   const handleNext = () => { setCurrent((prev) => (prev + 1) % slides.length); setProgress(0); };
   const handlePrev = () => { setCurrent((prev) => (prev - 1 + slides.length) % slides.length); setProgress(0); };
   const handleDotClick = (index) => { setCurrent(index); setProgress(0); };
@@ -84,39 +79,39 @@ export default function HeroSlider() {
   return (
     <div className="hero-slider">
       <div className="hero-slider__bg">
-        {currentSlide.hasVideo ? (
-          <>
-            <video
-              ref={videoRef}
-              className="hero-slider__video"
-              src="/loja-video.mp4"
-              muted loop playsInline autoPlay
-            />
-            <div className="hero-slider__overlay" />
-          </>
-        ) : (
-          <div className="hero-slider__gradient" />
-        )}
+        <div className="hero-slider__gradient" />
       </div>
 
       <div className="hero-slider__container container">
-        <div className="hero-slider__content animate-fade-in">
-          <span className="hero-slider__badge">
-            <Sparkles size={13} />
-            <span>{currentSlide.badge}</span>
-          </span>
+        <div className="hero-slider__inner">
+          <div className="hero-slider__content animate-fade-in">
+            <span className="hero-slider__badge">
+              <Sparkles size={13} />
+              <span>{currentSlide.badge}</span>
+            </span>
 
-          <h1 className="hero-slider__title">{currentSlide.title}</h1>
-          <p className="hero-slider__subtitle">{currentSlide.subtitle}</p>
+            <h1 className="hero-slider__title">{currentSlide.title}</h1>
+            <p className="hero-slider__subtitle">{currentSlide.subtitle}</p>
 
-          <div className="hero-slider__buttons">
-            <button className="btn btn--primary" onClick={() => handleCTA(currentSlide.btnPrimaryLink)}>
-              {currentSlide.btnPrimary} <ArrowRight size={17} />
-            </button>
-            <button className="btn btn--secondary" onClick={() => handleCTA(currentSlide.btnSecondaryLink)}>
-              {currentSlide.btnSecondary}
-            </button>
+            <div className="hero-slider__buttons">
+              <button className="btn btn--primary" onClick={() => handleCTA(currentSlide.btnPrimaryLink)}>
+                {currentSlide.btnPrimary} <ArrowRight size={17} />
+              </button>
+              <button className="btn btn--secondary" onClick={() => handleCTA(currentSlide.btnSecondaryLink)}>
+                {currentSlide.btnSecondary}
+              </button>
+            </div>
           </div>
+
+          {currentSlide.productImage && (
+            <div className="hero-slider__product" aria-hidden="true">
+              <img
+                src={currentSlide.productImage}
+                alt={currentSlide.productAlt}
+                className="hero-slider__product-img"
+              />
+            </div>
+          )}
         </div>
       </div>
 

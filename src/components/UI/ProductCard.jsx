@@ -12,8 +12,9 @@ const storeNames = {
   aliexpress: 'AliExpress'
 };
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, variant = 'default' }) {
   const navigate = useNavigate();
+  const isHero = variant === 'hero';
 
   const categoryInfo = categories.find(c => c.slug === product.category) || {
     icon: 'HelpCircle',
@@ -41,7 +42,10 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className="product-card" onClick={() => navigate(`/produto/${product.slug}`)}>
+    <div
+      className={`product-card${isHero ? ' product-card--hero' : ''}`}
+      onClick={() => navigate(`/produto/${product.slug}`)}
+    >
       {/* Image */}
       <div className="product-card__media">
         {product.badge && (
@@ -53,9 +57,12 @@ export default function ProductCard({ product }) {
           <img src={product.image} alt={product.imageAlt} className="product-card__img" />
         ) : (
           <div className="product-card__placeholder" style={{ color: categoryInfo.color }}>
-            <IconComponent size={44} strokeWidth={1.2} />
+            <IconComponent size={isHero ? 64 : 44} strokeWidth={1.2} />
           </div>
         )}
+        <div className="product-card__media-overlay" aria-hidden="true">
+          <span>Ver produto →</span>
+        </div>
       </div>
 
       {/* Content */}
@@ -68,6 +75,10 @@ export default function ProductCard({ product }) {
         </div>
 
         <h3 className="product-card__name">{product.name}</h3>
+
+        {isHero && product.description && (
+          <p className="product-card__desc">{product.description}</p>
+        )}
 
         <div className="product-card__rating">
           <span className="stars">★★★★★</span>

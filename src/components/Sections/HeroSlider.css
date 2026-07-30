@@ -1,7 +1,7 @@
 .hero-slider {
   position: relative;
   width: 100%;
-  height: clamp(520px, 75vh, 680px);
+  height: clamp(500px, 72vh, 660px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -15,28 +15,17 @@
   z-index: 1;
 }
 
-.hero-slider__video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-slider__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(14, 27, 69, 0.94) 0%,
-    rgba(14, 27, 69, 0.72) 32%,
-    rgba(14, 27, 69, 0.22) 62%,
-    transparent 100%
-  );
-}
-
 .hero-slider__gradient {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #0E1B45 0%, #162453 50%, #1A2E6B 100%);
+  background: linear-gradient(135deg, #0B1535 0%, #0E1B45 40%, #162780 70%, #1A2E6B 100%);
+  animation: hero-gradient-shift 8s ease infinite alternate;
+}
+
+@keyframes hero-gradient-shift {
+  0%   { background: linear-gradient(135deg, #0B1535 0%, #0E1B45 40%, #162780 70%, #1A2E6B 100%); }
+  50%  { background: linear-gradient(145deg, #0E1B45 0%, #1A2E6B 40%, #0E3580 70%, #152060 100%); }
+  100% { background: linear-gradient(125deg, #081025 0%, #12204E 40%, #1A3090 70%, #0E1B45 100%); }
 }
 
 /* Content */
@@ -47,10 +36,39 @@
   pointer-events: none;
 }
 
+.hero-slider__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
 .hero-slider__content {
-  max-width: 660px;
+  flex: 0 0 52%;
   pointer-events: auto;
   color: #ffffff;
+}
+
+/* Product image (right side) */
+.hero-slider__product {
+  flex: 0 0 42%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.hero-slider__product-img {
+  max-height: 420px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.5));
+  animation: product-float 4s ease-in-out infinite;
+}
+
+@keyframes product-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-14px) rotate(1deg); }
 }
 
 /* Badge */
@@ -194,6 +212,8 @@
 /* Responsive */
 @media (max-width: 992px) {
   .hero-slider__arrow { display: none; }
+  .hero-slider__product { display: none; }
+  .hero-slider__content { flex: 0 0 100%; }
 }
 
 @media (max-width: 576px) {
