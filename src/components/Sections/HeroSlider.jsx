@@ -102,6 +102,11 @@ export default function HeroSlider() {
     <div className="hero-slider">
       <div className="hero-slider__bg">
         <div className="hero-slider__gradient" />
+        <div className="hero-blob hero-blob--1" />
+        <div className="hero-blob hero-blob--2" />
+        <div className="hero-blob hero-blob--3" />
+        <div className="hero-blob hero-blob--4" />
+        <div className="hero-dots" />
       </div>
 
       <div className="hero-slider__container container">
