@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Play, Pause, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Play, Pause, ChevronLeft, ChevronRight, Sparkles, Zap } from 'lucide-react';
 import './HeroSlider.css';
 
 const slides = [
@@ -8,37 +8,59 @@ const slides = [
     id: 1,
     badge: 'Curadoria de Confiança',
     title: 'O produto ideal pelo menor preço do dia.',
-    subtitle: 'Reunimos celulares e acessórios com melhor custo-benefício num lugar só. Compare preços em todos os marketplaces e economize de verdade.',
+    subtitle: 'Reunimos celulares e acessórios com melhor custo-benefício. Compare preços em todos os marketplaces e economize de verdade.',
     btnPrimary: 'Ver Ofertas da Loja',
     btnPrimaryLink: '/loja',
     btnSecondary: 'Guia de Linhas',
     btnSecondaryLink: '/linhas',
-    productImage: 'https://http2.mlstatic.com/D_NQ_NP_702537-MLA100077733515_122025-O.webp',
-    productAlt: 'Samsung Galaxy A17 5G',
   },
   {
     id: 2,
     badge: 'Achadinhos Exclusivos',
     title: 'Participe do nosso grupo de promoções.',
-    subtitle: 'Receba alertas de preço baixo, cupons de desconto e achados diários diretamente no seu WhatsApp ou Telegram. Sem spam, apenas ofertas reais.',
+    subtitle: 'Receba alertas de preço baixo, cupons e achados diretamente no seu WhatsApp ou Telegram. Sem spam — apenas ofertas reais.',
     btnPrimary: 'Falar no WhatsApp',
     btnPrimaryLink: 'https://wa.me/5551983215850',
     btnSecondary: 'Ver Loja',
     btnSecondaryLink: '/loja',
-    productImage: 'https://http2.mlstatic.com/D_NQ_NP_831434-MLA96401363339_102025-O.webp',
-    productAlt: 'Apple iPhone 15',
   },
   {
     id: 3,
     badge: 'Menor Preço Garantido',
     title: 'Compare preços em todos os marketplaces.',
-    subtitle: 'Verificamos automaticamente onde cada produto está mais barato — Shopee, Mercado Livre, Amazon, Magalu — e te mostramos a melhor oferta do momento.',
+    subtitle: 'Verificamos automaticamente onde cada produto está mais barato — Shopee, Mercado Livre, Amazon, Magalu — e mostramos a melhor oferta.',
     btnPrimary: 'Ver Categorias',
     btnPrimaryLink: '/loja',
     btnSecondary: 'Sobre a Curadoria',
     btnSecondaryLink: '/sobre',
-    productImage: 'https://http2.mlstatic.com/D_NQ_NP_673808-MLA99443133132_112025-O.webp',
-    productAlt: 'Apple iPhone 16',
+  },
+];
+
+/* Deals fixos mostrados na lateral do hero */
+const heroDeals = [
+  {
+    id: 'a',
+    img: 'https://http2.mlstatic.com/D_NQ_NP_702537-MLA100077733515_122025-O.webp',
+    name: 'Samsung Galaxy A17 5G 256GB',
+    price: 'R$ 1.556',
+    label: '⚡ Mix Cell Indica',
+    labelClass: 'deal--blue',
+  },
+  {
+    id: 'b',
+    img: 'https://http2.mlstatic.com/D_NQ_NP_673808-MLA99443133132_112025-O.webp',
+    name: 'Apple iPhone 16 128GB',
+    price: 'R$ 5.098',
+    label: '💎 Premium',
+    labelClass: 'deal--gold',
+  },
+  {
+    id: 'c',
+    img: 'https://http2.mlstatic.com/D_NQ_NP_637143-MLA100031537749_122025-O.webp',
+    name: 'Motorola Moto G35 5G 256GB',
+    price: 'R$ 1.174',
+    label: '🔥 Oferta',
+    labelClass: 'deal--orange',
   },
 ];
 
@@ -84,6 +106,8 @@ export default function HeroSlider() {
 
       <div className="hero-slider__container container">
         <div className="hero-slider__inner">
+
+          {/* ── Left: text content ── */}
           <div className="hero-slider__content animate-fade-in">
             <span className="hero-slider__badge">
               <Sparkles size={13} />
@@ -103,15 +127,31 @@ export default function HeroSlider() {
             </div>
           </div>
 
-          {currentSlide.productImage && (
-            <div className="hero-slider__product" aria-hidden="true">
-              <img
-                src={currentSlide.productImage}
-                alt={currentSlide.productAlt}
-                className="hero-slider__product-img"
-              />
+          {/* ── Right: deal cards flutuantes ── */}
+          <div className="hero-deals" aria-hidden="true">
+            <div className="hero-deals__label">
+              <Zap size={12} />
+              Ofertas do dia
             </div>
-          )}
+            {heroDeals.map((deal, idx) => (
+              <div
+                key={deal.id}
+                className={`hero-deal-card hero-deal-card--${idx}`}
+                onClick={() => navigate('/loja')}
+                role="presentation"
+              >
+                <div className="hero-deal-card__img-wrap">
+                  <img src={deal.img} alt={deal.name} loading="lazy" />
+                </div>
+                <div className="hero-deal-card__info">
+                  <span className={`hero-deal-card__badge ${deal.labelClass}`}>{deal.label}</span>
+                  <p className="hero-deal-card__name">{deal.name}</p>
+                  <span className="hero-deal-card__price">{deal.price}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
 
