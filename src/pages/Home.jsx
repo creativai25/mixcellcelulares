@@ -46,48 +46,44 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ── CATEGORIES ── */}
-        <section className="categories-section container reveal">
-          <div className="section-header center">
-            <span className="badge badge--mix-cell">Navegue por Categoria</span>
-            <h2>O que você está procurando?</h2>
-            <p className="section-subtitle">Celulares, acessórios e eletrônicos selecionados pelos melhores preços</p>
+        {/* ── CATEGORIES (Shopee-style circles) ── */}
+        <section className="cat-section container reveal">
+          <div className="cat-section__header">
+            <h2 className="cat-section__title">Categorias</h2>
+            <button className="cat-section__more" onClick={() => navigate('/loja')}>
+              Ver todas →
+            </button>
           </div>
-
-          <div className="categories-grid">
-            {categories.slice(0, 8).map((cat) => {
+          <div className="cat-row">
+            {categories.map((cat) => {
               const IconComp = Icons[cat.icon] || Icons.HelpCircle;
               return (
                 <div
                   key={cat.slug}
-                  className="category-card"
+                  className="cat-circle"
                   onClick={() => navigate(`/loja/${cat.slug}`)}
                   style={{ '--cat-color': cat.color }}
                 >
-                  <div className="category-card__icon">
-                    <IconComp size={20} />
+                  <div className="cat-circle__icon">
+                    <IconComp size={22} />
                   </div>
-                  <span className="category-card__label">{cat.label}</span>
+                  <span className="cat-circle__label">{cat.label}</span>
                 </div>
               );
             })}
-          </div>
-
-          <div className="categories-section__footer">
-            <button className="btn btn--outline" onClick={() => navigate('/loja')}>
-              Ver todas as {categories.length} categorias
-            </button>
           </div>
         </section>
 
         {/* ── PRODUCTS EDITORIAL GRID ── */}
         <section className="products-section container reveal">
-          <div className="section-header">
+          <div className="products-section__header">
             <div>
-              <span className="badge badge--mix-cell">Ofertas em Destaque</span>
-              <h2 className="products-section__title">Melhores preços do dia</h2>
-              <p className="section-subtitle">Curadoria nos maiores marketplaces do Brasil — sem custo extra para você</p>
+              <h2 className="products-section__title">Ofertas do Dia</h2>
+              <p className="products-section__sub">Curadoria nos maiores marketplaces — sem custo extra para você</p>
             </div>
+            <button className="btn btn--outline btn--sm" onClick={() => navigate('/loja')}>
+              Ver loja →
+            </button>
           </div>
 
           <div className="editorial-grid">
@@ -98,12 +94,6 @@ export default function Home() {
                 variant={idx === 0 ? 'hero' : 'default'}
               />
             ))}
-          </div>
-
-          <div className="products-section__footer">
-            <button className="btn btn--outline" onClick={() => navigate('/loja')}>
-              Ver loja completa →
-            </button>
           </div>
         </section>
 

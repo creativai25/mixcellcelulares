@@ -54,43 +54,36 @@ export default function ProductCard({ product, variant = 'default' }) {
           </span>
         )}
         {product.image ? (
-          <img src={product.image} alt={product.imageAlt} className="product-card__img" />
+          <img src={product.image} alt={product.imageAlt} className="product-card__img" loading="lazy" />
         ) : (
           <div className="product-card__placeholder" style={{ color: categoryInfo.color }}>
-            <IconComponent size={isHero ? 64 : 44} strokeWidth={1.2} />
+            <IconComponent size={isHero ? 64 : 48} strokeWidth={1.2} />
           </div>
         )}
-        <div className="product-card__media-overlay" aria-hidden="true">
-          <span>Ver produto →</span>
-        </div>
       </div>
 
-      {/* Content */}
-      <div className="product-card__content">
-        <div className="product-card__store-row">
-          <span className="product-card__brand">{product.brand || 'Mix Cell'}</span>
-          <span className={`product-card__store-badge store-badge--${mainStoreKey}`}>
-            {mainStoreName}
-          </span>
-        </div>
-
-        <h3 className="product-card__name">{product.name}</h3>
+      {/* Body */}
+      <div className="product-card__body">
+        <p className="product-card__name">{product.name}</p>
 
         {isHero && product.description && (
           <p className="product-card__desc">{product.description}</p>
         )}
 
-        <div className="product-card__rating">
-          <span className="stars">★★★★★</span>
-          <span className="rating-val">4.8</span>
+        <div className="product-card__price-row">
+          <span className="product-card__price">{formattedMinPrice}</span>
         </div>
 
-        <div className="product-card__price-block">
-          <span className="product-card__price-from">a partir de</span>
-          <div className="product-card__price-val">{formattedMinPrice}</div>
+        <div className="product-card__foot">
+          <span className={`product-card__store store--${mainStoreKey}`}>
+            {mainStoreName}
+          </span>
+          <span className="product-card__stars">★ 4.8</span>
         </div>
 
-        <span className="product-card__cta">Ver Oferta →</span>
+        {isHero && (
+          <span className="product-card__cta">Ver Oferta →</span>
+        )}
       </div>
     </div>
   );
