@@ -4,21 +4,21 @@
 :root {
   /* Navy + Electric Blue + Orange e-commerce palette */
   --mc-navy:    #0E1B45;   /* deep navy */
-  --mc-bg:      #0B1230;   /* dark page background */
+  --mc-bg:      #F4F6FF;   /* light lavender page background */
   --mc-blue:    #1A56DB;   /* primary interactive blue */
   --mc-sky:     #1A56DB;   /* alias */
   --mc-lime:    #FF4F00;   /* CTA orange */
   --mc-orange:  #FF4F00;   /* explicit orange alias */
-  --mc-price:   #E8303A;   /* price red — mais vivo em fundo escuro */
+  --mc-price:   #C8000A;   /* price red */
   --mc-amber:   #F59E0B;   /* star ratings */
   --mc-green:   #25D366;   /* WhatsApp */
   --mc-white:   #FFFFFF;
-  --mc-bg-soft: #0E1845;   /* alternate section bg (slightly lighter dark) */
-  --mc-bg-card: #19234E;   /* dark card bg */
-  --mc-glass:   rgba(255, 255, 255, 0.04);
-  --mc-border:  rgba(255, 255, 255, 0.10);
-  --mc-text:    #C8D5EF;   /* light text for dark bg */
-  --mc-muted:   #7D96C2;   /* medium-light muted */
+  --mc-bg-soft: #E8EDFF;   /* soft lavender section bg */
+  --mc-bg-card: #FFFFFF;   /* white cards */
+  --mc-glass:   rgba(255, 255, 255, 0.70);
+  --mc-border:  rgba(14, 27, 69, 0.09);
+  --mc-text:    #1A2340;   /* dark navy text */
+  --mc-muted:   #6A7594;   /* medium muted */
 
   /* spacing */
   --section-px:  clamp(20px, 5vw, 36px);
