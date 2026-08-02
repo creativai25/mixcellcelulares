@@ -26,23 +26,34 @@ export default async function handler(req, res) {
     const rows = await r.json();
 
     const labelToSlug = {
-      'Acessórios em Geral': 'acessorios',
-      'Acessórios':          'acessorios',
-      'Áudio':               'fones',
-      'Carregadores':        'cabos',
-      'Suportes':            'suportes',
-      'Smartwatches':        'acessorios',
-      'Câmeras':             'cameras',
-      'Smartphones':         'celulares',
-      'Películas':           'peliculas',
-      'Capinhas':            'capinhas',
+      // n8n detectCategory labels (fonte canônica)
+      'Cabos':                    'cabos',
+      'Fones de Ouvido e Headsets': 'fones',
+      'Películas':                'peliculas',
+      'Capinhas':                 'capinhas',
+      'Suportes Veiculares':      'suportes',
+      'Som':                      'som',
+      'Alexas e Firestick':       'alexas',
+      'TVs':                      'tvs',
+      'Notebooks':                'notebooks',
+      'Câmeras de Segurança':     'cameras',
+      'Acessórios em Geral':      'acessorios',
+      'celulares':                'celulares',
+      // aliases legados
+      'Acessórios':               'acessorios',
+      'Áudio':                    'fones',
+      'Carregadores':             'cabos',
+      'Suportes':                 'suportes',
+      'Smartwatches':             'acessorios',
+      'Câmeras':                  'cameras',
+      'Smartphones':              'celulares',
     };
 
     const products = rows.map((row) => ({
       id: row.id,
       slug: row.slug,
       name: row.nome,
-      category: labelToSlug[row.categoria] || row.categoria,
+      category: labelToSlug[row.categoria] || (row.categoria || 'acessorios').toLowerCase(),
       brand: row.marca || '',
       model: row.modelo || '',
       mlId: row.ml_id || null,
