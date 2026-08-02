@@ -77,8 +77,10 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-card);
-  border: 1px solid var(--mc-border);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
   overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
 .produto-page__badge {

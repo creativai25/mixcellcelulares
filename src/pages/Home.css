@@ -88,12 +88,12 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--cat-color, var(--mc-blue)) 12%, white);
-  border: 1.5px solid color-mix(in srgb, var(--cat-color, var(--mc-blue)) 22%, transparent);
+  background: color-mix(in srgb, var(--cat-color, var(--mc-blue)) 18%, #1a2560);
+  border: 1.5px solid color-mix(in srgb, var(--cat-color, var(--mc-blue)) 35%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--cat-color, var(--mc-blue));
+  color: color-mix(in srgb, var(--cat-color, var(--mc-blue)) 80%, #ffffff);
   transition: background 0.18s, color 0.18s, border-color 0.18s;
 }
 

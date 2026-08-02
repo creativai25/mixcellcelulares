@@ -51,15 +51,15 @@
 
 .step-card__icon {
   margin-bottom: 16px;
-  background: var(--mc-white);
+  background: rgba(26, 86, 219, 0.15);
   width: 52px;
   height: 52px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--mc-border);
-  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(26, 86, 219, 0.3);
+  color: #60a5fa;
 }
 
 .step-card__title {
