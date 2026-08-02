@@ -87,11 +87,11 @@ export default function Home() {
           </div>
 
           <div className="editorial-grid">
-            {displayProducts.map((prod, idx) => (
+            {displayProducts.map((prod) => (
               <ProductCard
                 key={prod.id}
                 product={prod}
-                variant={idx === 0 ? 'hero' : 'default'}
+                variant="default"
               />
             ))}
           </div>

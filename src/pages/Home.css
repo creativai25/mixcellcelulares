@@ -143,24 +143,16 @@
   color: var(--mc-muted);
 }
 
-/* 4-column grid on desktop */
+/* 4-column uniform grid */
 .editorial-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
 
-/* First card: hero (2×2 span) */
-.editorial-grid .product-card--hero {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
 /* ── Responsive ── */
 @media (max-width: 1024px) {
-  .editorial-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .editorial-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -173,12 +165,6 @@
   .editorial-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-  }
-
-  /* Hero card is wider but not taller on mobile */
-  .editorial-grid .product-card--hero {
-    grid-column: span 2;
-    grid-row: span 1;
   }
 
   .products-section { padding: 20px 12px 0; }
