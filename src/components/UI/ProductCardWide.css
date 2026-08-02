@@ -58,7 +58,7 @@
 .product-card-wide__title {
   font-size: 24px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   margin-bottom: 12px;
   line-height: 1.25;
 }
@@ -118,7 +118,7 @@
 .product-card-wide__price-val {
   font-size: 26px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
 }
 
 .product-card-wide__shipping-info {

@@ -9,6 +9,7 @@ const STATUS_CORES = {
   'Aguardando peça':'#8b5cf6',
   'Pronto':         '#10b981',
   'Entregue':       '#6b7280',
+  'Sem conserto':   '#ef4444',
 };
 
 export default function OSList({ onEdit }) {
@@ -42,7 +43,8 @@ export default function OSList({ onEdit }) {
 
   function totalOS(os) {
     const servs = (os.servicosSelecionados || []).reduce((acc, s) => acc + parseFloat(os.servicosValores?.[s] || 0), 0);
-    return Math.max(0, servs - parseFloat(os.desconto || 0));
+    const itens = (os.itensPersonalizados || []).reduce((acc, i) => acc + parseFloat(i.valor || 0), 0);
+    return Math.max(0, servs + itens - parseFloat(os.desconto || 0));
   }
 
   function handlePrint(os) {

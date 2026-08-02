@@ -151,6 +151,195 @@
 .status-opt input { display: none; }
 .status-opt.active { border-color: #2563eb; background: #0f1e3d; color: #fff; }
 
+/* ── NOVA ESTRUTURA DE ITENS DO ORÇAMENTO ── */
+.os-item-row-complex {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.os-item-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 110px;
+}
+.os-item-field.flex2 {
+  flex: 2;
+  min-width: 180px;
+}
+.os-item-field label {
+  font-size: 0.72rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.os-item-field input, .os-item-field select {
+  background: #0a0a0a;
+  border: 1px solid #222;
+  border-radius: 6px;
+  color: #fff;
+  padding: 8px 10px;
+  font-size: 0.88rem;
+  box-sizing: border-box;
+}
+.os-item-field input:focus, .os-item-field select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+.os-item-row-complex .btn-remove-item {
+  margin-bottom: 2px;
+}
+
+/* ── BOTÕES E AÇÕES ── */
+.btn-delete {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: #270f0f;
+  color: #ef4444;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-delete:hover {
+  background: #3c1414;
+  border-color: #ef4444;
+}
+
+.os-form-bottom-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn-save-large {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex: 1.5;
+  min-width: 200px;
+}
+.btn-save-large:hover { background: #1d4ed8; }
+.btn-save-large.saved { background: #16a34a; }
+
+.btn-whatsapp-send {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  background: #25D366;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-decoration: none;
+  flex: 1;
+  min-width: 200px;
+}
+.btn-whatsapp-send:hover { background: #1f9c4d; }
+
+/* ── IMAGENS DO APARELHO (GRID E SLOTS) ── */
+.os-fotos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 10px;
+}
+@media (max-width: 768px) {
+  .os-fotos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.foto-upload-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.foto-box-label {
+  font-size: 0.76rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.foto-input-label {
+  height: 120px;
+  border: 2px dashed #2a2a2a;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.15s;
+  background: #0f0f0f;
+}
+.foto-input-label:hover {
+  border-color: #2563eb;
+  color: #3b82f6;
+  background: #0d162d;
+}
+.foto-preview-container {
+  position: relative;
+  height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #2a2a2a;
+}
+.foto-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.foto-overlay-actions {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  padding: 6px;
+  justify-content: space-between;
+}
+.btn-download-foto, .btn-remove-foto {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+.btn-download-foto {
+  background: #2563eb;
+  color: #fff;
+}
+.btn-download-foto:hover {
+  background: #1d4ed8;
+}
+.btn-remove-foto {
+  background: #ef4444;
+  color: #fff;
+}
+.btn-remove-foto:hover {
+  background: #dc2626;
+}
+
 /* ── PRINT ── */
 .print-only  { display: none; }
 .screen-only { display: flex; flex-direction: column; }

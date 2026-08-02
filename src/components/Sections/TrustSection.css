@@ -15,7 +15,7 @@
 .trust-section__title {
   font-size: 34px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   margin-top: 12px;
   letter-spacing: -0.02em;
 }
@@ -85,7 +85,7 @@
 .trust-badge__text h4 {
   font-size: 15px;
   font-weight: 700;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   margin-bottom: 4px;
 }
 

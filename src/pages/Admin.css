@@ -96,6 +96,57 @@
 
 .admin-main { padding: 24px; max-width: 900px; margin: 0 auto; }
 
+/* ── DASHBOARD METRICS ── */
+.admin-dashboard-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.metric-card {
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.metric-icon-wrapper {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.metric-icon-wrapper.blue { background: #2563eb1a; color: #3b82f6; }
+.metric-icon-wrapper.green { background: #16a34a1a; color: #4ade80; }
+.metric-icon-wrapper.purple { background: #8b5cf61a; color: #a78bfa; }
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.metric-label {
+  font-size: 0.72rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.metric-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .admin-dashboard-metrics {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
 @media (max-width: 600px) {
   .admin-header { flex-wrap: wrap; padding: 12px 16px; }
   .admin-tabs { order: 3; width: 100%; }

@@ -11,7 +11,7 @@
 .video-section__title {
   font-size: 30px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   margin-top: 8px;
 }
 
@@ -147,7 +147,7 @@
 .video-card__title {
   font-size: 15px;
   font-weight: 700;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   line-height: 1.4;
   margin-bottom: 12px;
   display: -webkit-box;

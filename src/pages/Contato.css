@@ -11,7 +11,7 @@
 .contato-page__title {
   font-size: 38px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   margin-top: 12px;
 }
 
@@ -62,7 +62,7 @@
 .contato-info-item h4 {
   font-size: 15px;
   font-weight: 700;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   margin-bottom: 4px;
 }
 
@@ -127,7 +127,7 @@
   border-radius: 8px;
   border: 1px solid var(--mc-border);
   background: var(--mc-bg-card);
-  color: var(--mc-white);
+  color: var(--mc-text);
   outline: none;
   transition: all 0.2s ease;
 }
@@ -157,7 +157,7 @@
 .contato-form__success h3 {
   font-size: 22px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
 }
 
 .contato-form__success p {

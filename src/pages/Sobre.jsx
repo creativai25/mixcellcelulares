@@ -12,24 +12,24 @@ export default function Sobre() {
     {
       icon: <Target size={24} className="text-sky" />,
       title: 'Missão',
-      desc: 'Proporcionar o melhor custo-benefício em eletrônicos e reparos rápidos de celulares, devolvendo a conectividade e segurança aos nossos clientes em Canoas/RS.'
+      desc: 'Guiar os consumidores brasileiros nas melhores decisões de compra de celulares e acessórios, garantindo o menor preço e indicando apenas itens de alta durabilidade.'
     },
     {
       icon: <Eye size={24} className="text-sky" />,
       title: 'Visão',
-      desc: 'Ser a principal referência técnica em recomendação de aparelhos e serviços de reparo, baseando-nos sempre na transparência absoluta do que conserta.'
+      desc: 'Ser a principal referência independente em curadoria e comparação de preços de hardware, reconhecida pela honestidade técnica e transparência das avaliações.'
     },
     {
       icon: <Heart size={24} className="text-sky" />,
       title: 'Valores',
-      desc: 'Transparência, rigor técnico, honestidade comercial, atendimento ágil e compromisso com o descarte correto de resíduos eletrônicos.'
+      desc: 'Transparência absoluta, rigor analítico, isenção comercial, compromisso com a economia do usuário e aversão a produtos descartáveis.'
     }
   ];
 
   return (
     <PageWrapper
       title="Quem Somos"
-      description="Saiba mais sobre os 11 anos de história da Mix Cell Celulares em Canoas/RS. Conheça nossa bancada e nossos valores técnicos."
+      description="Conheça a história e os valores da curadoria técnica da Mix Cell Shop. Indicando o que realmente dura, pelo menor preço."
     >
       <div className="sobre-page">
         {/* Seção Sobre Principal */}
@@ -40,7 +40,7 @@ export default function Sobre() {
           <div className="section-header center">
             <span className="badge badge--mix-cell">Diretrizes da Empresa</span>
             <h2>Nossa Filosofia Comercial</h2>
-            <p className="section-subtitle">O que guia as nossas recomendações e consertos todos os dias</p>
+            <p className="section-subtitle">O que guia as nossas recomendações e curadoria todos os dias</p>
           </div>
 
           <div className="sobre-values__grid">
@@ -64,9 +64,9 @@ export default function Sobre() {
               <Milestone size={20} />
               <span>Nossa Linha do Tempo</span>
             </div>
-            <h2>11 anos resolvendo problemas em Canoas/RS</h2>
+            <h2>11 anos de experiência técnica em tecnologia</h2>
             <p>
-              Fundada em 2015 como uma pequena oficina de bairro, a Mix Cell cresceu em Canoas com o compromisso de explicar detalhadamente cada conserto. Aprendemos quais componentes falham e quais marcas duram. Em 2026, demos o passo de criar esta loja de afiliados para guiar as decisões de compra de milhares de pessoas com a mesma integridade da nossa bancada.
+              Nossa história começou em 2015 como um laboratório de assistência técnica. Ao longo de mais de uma década na bancada, analisando componentes danificados e descobrindo quais marcas dão defeito mais rápido, acumulamos um conhecimento profundo sobre hardware. Em 2026, transformamos essa bagagem técnica na Mix Cell Shop: um portal independente de afiliados projetado para poupar seu tempo e dinheiro, recomendando apenas o que realmente dura.
             </p>
           </div>
         </div>

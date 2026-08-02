@@ -15,7 +15,7 @@
 .scroll-row-header__title {
   font-size: 26px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
 }
 
 .scroll-row-header__subtitle {
@@ -38,7 +38,7 @@
   border-radius: 50%;
   background: var(--mc-bg-card);
   border: 1px solid var(--mc-border);
-  color: var(--mc-white);
+  color: var(--mc-navy);
   transition: all 0.2s ease;
 }
 
@@ -95,12 +95,12 @@
 
 .scroll-row-mask--left {
   left: 0;
-  background: linear-gradient(to right, var(--mc-white), transparent);
+  background: linear-gradient(to right, var(--mc-bg), transparent);
 }
 
 .scroll-row-mask--right {
   right: 0;
-  background: linear-gradient(to left, var(--mc-white), transparent);
+  background: linear-gradient(to left, var(--mc-bg), transparent);
 }
 
 @media (max-width: 768px) {

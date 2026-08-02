@@ -189,20 +189,20 @@ export default function Produto() {
               </ul>
             </div>
 
-            {/* Suporte Assistência Técnica CTA */}
+            {/* Suporte Consultoria Técnica CTA */}
             <div className="produto-page__support-cta">
               <div className="produto-page__support-info">
                 <Info size={20} className="text-sky" />
                 <div>
-                  <h5>Dúvidas sobre o modelo ou conserto?</h5>
-                  <p>Fale diretamente com quem conserta para tirar dúvidas ou solicitar orçamento.</p>
+                  <h5>Dúvidas sobre qual modelo escolher?</h5>
+                  <p>Fale diretamente com o nosso especialista para receber recomendações e tirar suas dúvidas.</p>
                 </div>
               </div>
               <button 
                 className="btn btn--whatsapp btn--sm"
-                onClick={() => window.open(`https://wa.me/5551983215850?text=Olá, tenho dúvidas sobre o modelo ${product.name} ou gostaria de um orçamento de conserto.`, '_blank')}
+                onClick={() => window.open(`https://wa.me/5551983215850?text=Olá! Tenho dúvidas sobre o modelo ${product.name} e gostaria de ajuda na compra.`, '_blank')}
               >
-                Chamar Assistência no WhatsApp
+                Tirar Dúvidas no WhatsApp
               </button>
             </div>
           </div>

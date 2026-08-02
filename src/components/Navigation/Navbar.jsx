@@ -6,7 +6,6 @@ import './Navbar.css';
 
 const navLinks = [
   { label: 'Guia de Linhas', href: '/linhas' },
-  { label: 'Serviços', href: '/servicos' },
   { label: 'Sobre', href: '/sobre' },
 ];
 

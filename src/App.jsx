@@ -15,7 +15,6 @@ const Loja      = React.lazy(() => import('./pages/Loja'));
 const Linhas    = React.lazy(() => import('./pages/Linhas'));
 const Categoria = React.lazy(() => import('./pages/Categoria'));
 const Produto   = React.lazy(() => import('./pages/Produto'));
-const Servicos  = React.lazy(() => import('./pages/Servicos'));
 const Sobre     = React.lazy(() => import('./pages/Sobre'));
 const Contato   = React.lazy(() => import('./pages/Contato'));
 const Privacidade = React.lazy(() => import('./pages/Privacidade'));
@@ -48,9 +47,6 @@ function App() {
                   <Route path="/linhas"                          element={<Linhas />} />
                   <Route path="/loja/:categoria"                 element={<Categoria />} />
                   <Route path="/produto/:slug"                   element={<Produto />} />
-                  <Route path="/servicos"                        element={<Servicos />} />
-                  <Route path="/servicos/conserto-iphone-canoas" element={<Servicos servico="iphone" />} />
-                  <Route path="/servicos/troca-tela-canoas"      element={<Servicos servico="tela" />} />
                   <Route path="/sobre"                           element={<Sobre />} />
                   <Route path="/contato"                         element={<Contato />} />
                   <Route path="/privacidade"                     element={<Privacidade />} />

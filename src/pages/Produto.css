@@ -47,13 +47,13 @@
 }
 
 .produto-page__breadcrumb span.active {
-  color: var(--mc-white);
+  color: var(--mc-navy);
   font-weight: 700;
   cursor: default;
 }
 
 .produto-page__breadcrumb span.active:hover {
-  color: var(--mc-white);
+  color: var(--mc-navy);
 }
 
 .produto-page__breadcrumb .separator {
@@ -131,7 +131,7 @@
 .produto-page__title {
   font-size: 32px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   line-height: 1.2;
 }
 
@@ -163,7 +163,7 @@
 .produto-page__price-val {
   font-size: 28px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
 }
 
 .produto-page__price-note {
@@ -188,7 +188,7 @@
 .produto-page__tech-review-header h4 {
   font-size: 16px;
   font-weight: 700;
-  color: var(--mc-white);
+  color: var(--mc-navy);
 }
 
 .produto-page__tech-review-text {
@@ -216,7 +216,7 @@
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 12px;
-  color: var(--mc-white);
+  color: var(--mc-navy);
 }
 
 .produto-page__specs-list {
@@ -260,7 +260,7 @@
 .produto-page__support-info h5 {
   font-size: 14px;
   font-weight: 700;
-  color: var(--mc-white);
+  color: var(--mc-navy);
 }
 
 .produto-page__support-info p {

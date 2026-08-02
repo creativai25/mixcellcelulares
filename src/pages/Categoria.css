@@ -29,7 +29,7 @@
 .categoria-page__title {
   font-size: 36px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   line-height: 1.15;
 }
 
@@ -71,7 +71,7 @@
 .categoria-page__empty h3 {
   font-size: 20px;
   font-weight: 700;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   margin-bottom: 8px;
 }
 

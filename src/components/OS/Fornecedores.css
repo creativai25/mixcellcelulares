@@ -1,0 +1,333 @@
+.fornecedores-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.fornecedores-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .fornecedores-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fornecedores-card {
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.fornecedores-card h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2563eb;
+  margin: 0 0 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group input, .form-group textarea {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: #e0e0e0;
+  padding: 10px 12px;
+  font-size: 0.92rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.btn-submit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-submit:hover {
+  background: #1d4ed8;
+}
+
+.btn-cancel {
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  color: #ccc;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+.empty-text {
+  color: #555;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 24px 0;
+}
+
+.fornecedores-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.fornecedor-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+}
+
+.fornecedor-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fornecedor-name {
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.fornecedor-details {
+  display: flex;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.fornecedor-details span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fornecedor-obs {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: #666;
+  white-space: pre-line;
+}
+
+.fornecedor-item-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.fornecedor-item-actions button {
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #1a1a1a;
+  color: #aaa;
+  transition: all 0.15s;
+}
+
+.fornecedor-item-actions .btn-edit:hover {
+  background: #2563eb33;
+  color: #3b82f6;
+}
+
+.fornecedor-item-actions .btn-delete-small:hover {
+  background: #ef444433;
+  color: #ef4444;
+}
+
+/* Relatórios */
+.relatorio-gastos-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.relatorio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.relatorio-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2563eb;
+}
+
+.relatorio-title h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.month-picker {
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+.relatorio-fornecedores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.gasto-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gasto-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #222;
+  padding-bottom: 8px;
+}
+
+.gasto-card-header h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.gasto-total {
+  font-weight: 700;
+  color: #2563eb;
+  font-size: 1.1rem;
+}
+
+.gasto-breakdown {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #888;
+  background: #111;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.gasto-breakdown strong {
+  color: #ddd;
+}
+
+.no-parts-text {
+  color: #555;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.peças-compradas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.peças-compradas-list h5 {
+  margin: 4px 0;
+  font-size: 0.8rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.peças-compradas-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.peca-compra-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  padding: 6px 8px;
+  background: #111;
+  border-radius: 6px;
+}
+
+.peca-desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.peca-desc strong {
+  color: #fff;
+}
+
+.peca-desc span {
+  color: #666;
+  font-size: 0.72rem;
+}
+
+.peca-valores {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #888;
+  font-size: 0.72rem;
+}

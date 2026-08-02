@@ -5,8 +5,8 @@
   right: 0;
   z-index: 60;
   height: 32px;
-  background: linear-gradient(90deg, #03091A 0%, #0A2463 50%, #03091A 100%);
-  border-bottom: 1px solid rgba(43,166,255,0.2);
+  background: linear-gradient(90deg, #0F4C5C 0%, #1A5C70 50%, #0F4C5C 100%);
+  border-bottom: 1px solid rgba(167, 209, 41, 0.2);
   overflow: hidden;
   display: flex;
   align-items: center;

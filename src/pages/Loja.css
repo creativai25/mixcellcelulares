@@ -11,7 +11,7 @@
 .loja-page__title {
   font-size: 38px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   margin-top: 12px;
   letter-spacing: -0.02em;
 }
@@ -53,16 +53,16 @@
   font-size: 15px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--mc-border);
-  background: var(--mc-bg-card);
-  color: var(--mc-white);
+  background: var(--mc-white);
+  color: var(--mc-text);
   outline: none;
   transition: all 0.2s ease;
 }
 
 .loja-page__search-input:focus {
-  border-color: var(--mc-sky);
+  border-color: var(--mc-lime);
   background: var(--mc-white);
-  box-shadow: 0 0 0 3px rgba(58, 190, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(242, 156, 56, 0.15);
 }
 
 .loja-page__category-row {
@@ -90,7 +90,7 @@
 .loja-page__count {
   font-size: 14px;
   font-weight: 700;
-  color: var(--mc-sky);
+  color: var(--mc-navy);
 }
 
 .loja-page__clear-btn {
@@ -110,15 +110,16 @@
 
 .loja-page__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
   justify-items: center;
+  width: 100%;
 }
 
 .loja-page__empty {
   text-align: center;
   padding: 64px 20px;
-  background: var(--mc-bg-card);
+  background: var(--mc-white);
   border: 1px dashed var(--mc-border);
   border-radius: var(--radius-card);
   max-width: 500px;
@@ -133,7 +134,7 @@
 .loja-page__empty h3 {
   font-size: 20px;
   font-weight: 700;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   margin-bottom: 8px;
 }
 
@@ -149,7 +150,7 @@
   }
   
   .loja-page__grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
   }
 }

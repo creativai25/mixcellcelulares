@@ -43,7 +43,7 @@
 .guarantee-header h3 {
   font-size: 28px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   letter-spacing: -0.5px;
 }
 
@@ -77,7 +77,7 @@
 .g-card h4 {
   font-size: 16px;
   font-weight: 700;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   margin-bottom: 8px;
 }
 
@@ -95,7 +95,7 @@
 .faq-title {
   font-size: 32px;
   font-weight: 800;
-  color: var(--mc-white);
+  color: var(--mc-navy);
   margin-bottom: 32px;
 }
 
@@ -128,7 +128,7 @@
 .faq-question h4 {
   font-size: 16px;
   font-weight: 600;
-  color: var(--mc-white);
+  color: var(--mc-navy);
 }
 
 .faq-chevron {
