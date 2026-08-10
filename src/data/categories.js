@@ -11,5 +11,6 @@ export const categories = [
   { id: 'tvs', slug: 'tvs', label: 'TVs', icon: 'Tv', color: '#fb7185' },
   { id: 'notebooks', slug: 'notebooks', label: 'Notebooks', icon: 'Laptop', color: '#cbd5e1' },
   { id: 'cameras', slug: 'cameras', label: 'Câmeras de Segurança', icon: 'Camera', color: '#60a5fa' },
+  { id: 'smartwatches', slug: 'smartwatches', label: 'Smartwatches', icon: 'Watch', color: '#c084fc' },
   { id: 'acessorios', slug: 'acessorios', label: 'Acessórios em Geral', icon: 'Package', color: '#f472b6' }
 ];

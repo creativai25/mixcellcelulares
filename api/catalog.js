@@ -44,7 +44,7 @@ export default async function handler(req, res) {
       'Áudio':                    'fones',
       'Carregadores':             'cabos',
       'Suportes':                 'suportes',
-      'Smartwatches':             'acessorios',
+      'Smartwatches':             'smartwatches',
       'Câmeras':                  'cameras',
       'Smartphones':              'celulares',
     };
