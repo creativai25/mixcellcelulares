@@ -11,14 +11,14 @@ export default function TrustSection() {
           {/* Left: Quote / Brand message */}
           <div className="trust-section__content">
             <span className="badge badge--mix-cell">Por que a Mix Cell?</span>
-            <h2 className="trust-section__title">Compramos certo,<br />você economiza.</h2>
+            <h2 className="trust-section__title">Buscamos, avaliamos<br />e recomendamos para você economizar.</h2>
             <div className="trust-section__quote">
               <p className="trust-section__quote-text">
                 "Cada produto da nossa loja é escolhido por quem realmente usa e testa. Sem patrocínio de marcas, sem indicação genérica — só o que vale o seu dinheiro nos maiores marketplaces do Brasil."
               </p>
               <div className="trust-section__author">
                 <strong>Equipe Mix Cell</strong>
-                <span>Canoas / RS — Afiliados desde 2013</span>
+                <span>Canoas / RS — Afiliados desde 2026</span>
               </div>
             </div>
           </div>

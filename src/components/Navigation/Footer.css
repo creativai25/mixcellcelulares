@@ -1,15 +1,15 @@
 .footer {
   background: var(--mc-navy);
   color: rgba(255,255,255,0.75);
-  padding: 56px 0 0;
+  padding: 32px 0 0;
   margin-top: auto;
 }
 
 .footer__grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: 40px;
-  padding-bottom: 48px;
+  gap: 24px;
+  padding-bottom: 28px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -48,22 +48,22 @@
 }
 
 .footer__tagline {
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 12px;
+  line-height: 1.5;
   font-style: italic;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 10px;
 }
 
 .footer__rating {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 16px;
+  gap: 6px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 12px;
 }
-.footer__stars { color: #FBBF24; font-size: 13px; }
+.footer__stars { color: #FBBF24; font-size: 12px; }
 
 .footer__wa { align-self: flex-start; }
 
@@ -71,23 +71,23 @@
 .footer__col {}
 
 .footer__col-title {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--mc-sky);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .footer__links {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .footer__links button {
-  font-size: 13px;
+  font-size: 12px;
   color: rgba(255,255,255,0.6);
   text-align: left;
   transition: color 0.2s;
@@ -97,10 +97,10 @@
 .footer__links button:hover { color: var(--mc-sky); }
 
 .footer__address {
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 12px;
+  line-height: 1.6;
   color: rgba(255,255,255,0.55);
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .footer__badges {
@@ -121,9 +121,9 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
-  padding: 16px 0;
-  font-size: 12px;
+  gap: 8px;
+  padding: 12px 0;
+  font-size: 11px;
   color: rgba(255,255,255,0.35);
 }
 

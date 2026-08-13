@@ -47,6 +47,12 @@ export default async function handler(req, res) {
       'Smartwatches':             'smartwatches',
       'Câmeras':                  'cameras',
       'Smartphones':              'celulares',
+      'Ferramentas':              'ferramentas',
+      'Vídeo Games':              'video-games',
+      'Itens do Dia a Dia':       'dia-a-dia',
+      'Colecionáveis':            'colecionaveis',
+      'Animes':                   'animes',
+      'Churrasco':                'churrasco',
     };
 
     const products = rows.map((row) => ({

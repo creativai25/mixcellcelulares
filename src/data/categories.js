@@ -12,5 +12,11 @@ export const categories = [
   { id: 'notebooks', slug: 'notebooks', label: 'Notebooks', icon: 'Laptop', color: '#cbd5e1' },
   { id: 'cameras', slug: 'cameras', label: 'Câmeras de Segurança', icon: 'Camera', color: '#60a5fa' },
   { id: 'smartwatches', slug: 'smartwatches', label: 'Smartwatches', icon: 'Watch', color: '#c084fc' },
-  { id: 'acessorios', slug: 'acessorios', label: 'Acessórios em Geral', icon: 'Package', color: '#f472b6' }
+  { id: 'ferramentas', slug: 'ferramentas', label: 'Ferramentas', icon: 'Wrench', color: '#f97316' },
+  { id: 'video-games', slug: 'video-games', label: 'Vídeo Games', icon: 'Gamepad2', color: '#8b5cf6' },
+  { id: 'dia-a-dia', slug: 'dia-a-dia', label: 'Itens do Dia a Dia', icon: 'ShoppingBag', color: '#06b6d4' },
+  { id: 'colecionaveis', slug: 'colecionaveis', label: 'Colecionáveis', icon: 'Trophy', color: '#eab308' },
+  { id: 'animes', slug: 'animes', label: 'Animes', icon: 'Star', color: '#ec4899' },
+  { id: 'churrasco', slug: 'churrasco', label: 'Churrasco', icon: 'Flame', color: '#ef4444' },
+  { id: 'acessorios', slug: 'acessorios', label: 'Acessórios em Geral', icon: 'Package', color: '#f472b6' },
 ];

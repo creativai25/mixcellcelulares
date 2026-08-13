@@ -222,6 +222,23 @@
   50%       { transform: translateY(-10px) rotate(4deg); }
 }
 
+/* Mockup image (when slide has imageDesktop) */
+.hero-slide__mockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-slide__img {
+  max-width: 100%;
+  max-height: clamp(260px, 30vw, 420px);
+  object-fit: contain;
+  border-radius: 16px;
+  filter: drop-shadow(0 16px 48px rgba(0,0,0,0.5));
+  animation: icon-float 4s ease-in-out infinite;
+}
+
 /* Slide number */
 .hero-slide__num {
   position: absolute;

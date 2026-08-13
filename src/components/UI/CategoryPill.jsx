@@ -12,7 +12,7 @@ export default function CategoryPill({ category, active, onClick }) {
       style={{ '--pill-hover-color': category.color }}
     >
       <IconComponent className="category-pill__icon" size={16} />
-      <span className="category-pill__label">{category.label}</span>
+      <span className="category-pill__label notranslate" translate="no">{category.label}</span>
     </button>
   );
 }
