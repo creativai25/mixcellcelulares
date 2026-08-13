@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { categories } from '../../data/categories';
 import './Footer.css';
 
 export default function Footer() {
@@ -31,18 +30,6 @@ export default function Footer() {
             >
               Falar no WhatsApp
             </button>
-          </div>
-
-          {/* Categorias */}
-          <div className="footer__col">
-            <h4 className="footer__col-title">Categorias</h4>
-            <ul className="footer__links">
-              {categories.map(c => (
-                <li key={c.slug}>
-                  <button onClick={() => navigate(`/loja/${c.slug}`)}>{c.label}</button>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Institucional */}
